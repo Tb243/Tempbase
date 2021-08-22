@@ -21,7 +21,7 @@ GPIO.setup(trig, GPIO.OUT)
 GPIO.setup(echo, GPIO.IN)
 
 GPIO.output(trig, 0)
-print("waiting for sensor to settle")
+print("calibrating sensor")
 time.sleep(2)
 GPIO.output(trig, 1)
 time.sleep(0.00001)
