@@ -1,0 +1,3 @@
+board
+adafruit_mlx90614
+RPi
