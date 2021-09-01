@@ -2,7 +2,7 @@ from devices.device import Device
 import RPi.GPIO as GPIO
 import time
 
-class HCSP04(Device):
+class HCSR04(Device):
 
 	def __init__(self, echoPin=None, triggerPin=None):
 		self.name = "HCSP04"

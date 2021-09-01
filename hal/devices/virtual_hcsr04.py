@@ -1,7 +1,8 @@
 from devices.device import Device
 import random
+import time
 
-class VirtualHCSP04(Device):
+class VirtualHCSR04(Device):
 
 	def __init__(self, echoPin=None, triggerPin=None):
 		self.name = "Virtual HCSP04"
@@ -14,7 +15,7 @@ class VirtualHCSP04(Device):
 
 	def setup(self):
 		# No pins need to be set up as this is a virtual device.
-		pass
+		time.sleep(2.0)
 
 	def destroy(self):
 		# No pins need to be disabled as this is a virtual device.
@@ -23,4 +24,5 @@ class VirtualHCSP04(Device):
 	def read(self):
 		# Since this is a virtual device, we just generate a fake 
 		# value to emulate a sensorreading.
+		time.sleep(0.00001)
 		return random.uniform(0.5, 15.0)
