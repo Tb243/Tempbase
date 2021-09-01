@@ -1,0 +1,26 @@
+from devices.device import Device
+import random
+
+class VirtualHCSP04(Device):
+
+	def __init__(self, echoPin=None, triggerPin=None):
+		self.name = "Virtual HCSP04"
+		self.isVirtual = True
+		self.echoPin = echoPin
+		self.triggerPin = triggerPin
+
+	def validateConfig(self):
+		return True if (self.echoPin != None and self.triggerPin != None) else False
+
+	def setup(self):
+		# No pins need to be set up as this is a virtual device.
+		pass
+
+	def destroy(self):
+		# No pins need to be disabled as this is a virtual device.
+		pass
+
+	def read(self):
+		# Since this is a virtual device, we just generate a fake 
+		# value to emulate a sensorreading.
+		return random.uniform(0.5, 15.0)
