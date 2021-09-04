@@ -1,10 +1,12 @@
 import unittest
 import sys
 from devices import virtual_hcsr04
+from devices import virtual_mlx90614
 
 # Physical devices should each be wrapped in try except blocks
 try:
 	from devices import hcsr04
+	from devices import mlx90614
 except:
 	pass
 
@@ -42,6 +44,15 @@ if "hcsr04" in sys.modules:
 			except:
 				pass
 
+if "mlx90614" in sys.modules:
+	class TestPhysicalMLX90614(unittest.TestCase, DeviceTests):
+		def setUp(self):
+			self.device = mlx90614.MLX90614()
+			try:
+				self.device.setup()
+			except:
+				pass
+
 class TestVirtualHCSR04(unittest.TestCase, DeviceTests):
 
 	def setUp(self):
@@ -53,6 +64,20 @@ class TestVirtualHCSR04(unittest.TestCase, DeviceTests):
 			self.assertTrue(value >= 0.5 and value <= 15.0)
 		except:
 			self.fail("read() has not been implemented for device %s" % self.device.name)
+
+class TestVirtualMLX90614(unittest.TestCase, DeviceTests):
+
+	def setUp(self):
+		self.device = virtual_mlx90614.VirtualMLX90614()
+
+	def testRead(self):
+		try:
+			value = self.device.read()
+			self.assertTrue(value >= -20 and value <= 100)
+		except:
+			self.fail("read() has not been implemented for device %s" % self.device.name)
+
+
 
 
 if __name__ == "__main__":
