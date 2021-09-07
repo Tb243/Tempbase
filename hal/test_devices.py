@@ -112,6 +112,13 @@ class TestVirtualBuzzer5v(unittest.TestCase, DeviceTests):
     
     def setUp(self):
         self.device = virtual_buzzer5v.VirtualBUZZER5V()
+    
+    def testBuzz(self):
+        try:
+            value = self.device.buzz()
+        except:
+            self.fail("read() has not been implemented for device %s" % self.device.name)
+            
 class TestVirtualFS90R(unittest.TestCase, DeviceTests):
     
     def setUp(self):
@@ -134,11 +141,6 @@ class TestVirtualSEN0368(unittest.TestCase, DeviceTests):
         except:
             self.fail("read() has not been implemented for device %s" % self.device.name)
 
-    def testBuzz(self):
-        try:
-            value = self.device.buzz()
-        except:
-            self.fail("read() has not been implemented for device %s" % self.device.name)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
