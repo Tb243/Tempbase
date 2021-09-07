@@ -1,5 +1,4 @@
 from devices.device import Device
-import RPi.GPIO as GPIO
 import time
 
 class VirtualBUZZER5V(Device):
