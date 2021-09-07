@@ -3,18 +3,24 @@ import sys
 from devices import virtual_hcsr04
 from devices import virtual_mlx90614
 from devices import virtual_buzzer5v
+from devices import virtual_fs90r
+from devices import virtual_sen0368
 
 # Physical devices should each be wrapped in try except blocks
 try:
     from devices import hcsr04
     from devices import mlx90614
     from devices import buzzer5v
+    from devices import fs90r
+    from devices import sen0368
 except:
     pass
 
 HCSR04_ECHO_PIN = 13
 HCSR04_TRIGGER_PIN = 6
 BUZZER5V_BUZZER_PIN = 26
+FS90R_SERVO_PIN = 12
+SEN0368_LIQUID_PIN = 20
 
 class DeviceTests:
     def testSetup(self):
@@ -34,6 +40,7 @@ class DeviceTests:
             self.device.read()
         except:
             self.fail("read() has not been implemented for device %s" % self.device.name)
+
 
 # This needs to be wrapped to prevent tests from crashing on
 # devices that don't have RPi.GPIO installed.
@@ -59,11 +66,24 @@ if "buzzer5v" in sys.modules:
     class TestPhysicalBUZZER5V(unittest.TestCase, DeviceTests):
         def setUp(self):
             self.device = buzzer5v.BUZZER5V()
+if "fs90r" in sys.modules:
+    class TestPhysicalFS90R(unittest.TestCase, DeviceTests):
+        def setUp(self):
+            self.device = fs90r.FS90R()
             try:
                 self.device.setup()
             except:
                 pass
             
+if "sen0368" in sys.modules:
+    class TestPhysicalSEN0368(unittest.TestCase, DeviceTests):
+        def setUp(self):
+            self.device = sen0368.SEN0368()
+            try:
+                self.device.setup()
+            except:
+                pass
+
 class TestVirtualHCSR04(unittest.TestCase, DeviceTests):
 
     def setUp(self):
@@ -92,6 +112,27 @@ class TestVirtualBuzzer5v(unittest.TestCase, DeviceTests):
     
     def setUp(self):
         self.device = virtual_buzzer5v.VirtualBUZZER5V()
+class TestVirtualFS90R(unittest.TestCase, DeviceTests):
+    
+    def setUp(self):
+        self.device = virtual_fs90r.VirtualFS90R()
+
+    def testTurn(self):
+        try:
+            value = self.device.turn()
+        except:
+            self.fail("read() has not been implemented for device %s" % self.device.name)
+class TestVirtualSEN0368(unittest.TestCase, DeviceTests):
+    
+    def setUp(self):
+        self.device = virtual_sen0368.VirtualSEN0368()
+
+    def testRead(self):
+        try:
+            value = self.device.read()
+            self.assertTrue(value >= 0.5 and value <= 15.0)
+        except:
+            self.fail("read() has not been implemented for device %s" % self.device.name)
 
     def testBuzz(self):
         try:
