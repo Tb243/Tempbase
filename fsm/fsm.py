@@ -1,4 +1,5 @@
 from states import state_setup
+from states import state_waitforhand
 
 class Fsm:
 
@@ -32,6 +33,7 @@ class Fsm:
 if __name__ == "__main__":
 	fsm = Fsm()
 	fsm.addState(state_setup.StateSetup(fsm))
+	fsm.addState(state_waitforhand.StateWaitForHand(fsm))
 	fsm.transitionState("setup")
 	
 	fsm.spin()
