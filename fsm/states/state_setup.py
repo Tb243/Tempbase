@@ -1,5 +1,4 @@
 from states import state
-import time
 
 class StateSetup(state.FsmState):
 
