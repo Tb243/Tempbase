@@ -1,5 +1,7 @@
 from states import state_setup
 from states import state_waitforhand
+from states import state_dispensesanitiser
+from states import state_measuretemperature
 
 class Fsm:
 
@@ -34,6 +36,14 @@ if __name__ == "__main__":
 	fsm = Fsm()
 	fsm.addState(state_setup.StateSetup(fsm))
 	fsm.addState(state_waitforhand.StateWaitForHand(fsm))
+	fsm.transitionState("setup")
+
+	fsm.addState(state_setup.StateSetup(fsm))
+	fsm.addState(state_dispensesanitiser.StateDispenseSanitiser(fsm))
+	fsm.transitionState("setup")
+
+	fsm.addState(state_setup.StateSetup(fsm))
+	fsm.addState(state_measuretemperature.StateMeasureTemperature(fsm))
 	fsm.transitionState("setup")
 	
 	fsm.spin()
