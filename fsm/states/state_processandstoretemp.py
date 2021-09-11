@@ -8,8 +8,9 @@ class StateProcessAndStoreTemp(state.FsmState):
         self.label = "Process and store temperature"
         self.fsm = fsm
 
-    def onEnterState(self, args=None):
+    def onEnterState(self, temperature):
         print("Entering the process and store temperature state")
+        self.temperature = temperature
         
 
     def onExitState(self):
@@ -17,8 +18,7 @@ class StateProcessAndStoreTemp(state.FsmState):
 
     def main(self):
         # add read (temp) value to database
-        temp = float(input("Enter temperature value: "))
-        if temp < 37.6:
+        if self.temperature < 37.6:
             #display green tick
             print("Green Tick being displayed")
             time.sleep(0.05)

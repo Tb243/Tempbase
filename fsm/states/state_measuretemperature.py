@@ -15,10 +15,6 @@ class StateMeasureTemperature(state.FsmState):
 		print("Leaving the measure temperature state")
 
 	def main(self):
-		while True:
-			# turn = mlx90614.read()
-			read = float(input("Enter value under 37.6 for temperature: "))
-			if read < 37.6:
-				break
-
-		self.fsm.transitionState("processAndStoreTemperature")
+		# turn = mlx90614.read()
+		read = float(input("Enter value under 37.6 for temperature: "))
+		self.fsm.transitionState("processAndStoreTemperature", read)
