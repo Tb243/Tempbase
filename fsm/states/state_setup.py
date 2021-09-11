@@ -12,5 +12,5 @@ class StateSetup(state.FsmState):
 
 		#Set up server
 		#Set up database
-		#Set up display
+		#Set up web browser (launch web browser)
 		self.fsm.transitionState("waitForHand")

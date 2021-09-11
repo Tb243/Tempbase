@@ -18,10 +18,11 @@ class StateRejectUser(state.FsmState):
 	def main(self):
 		#display red cross
 		print("Displaying red cross")
-		time.sleep(0.05)
+		time.sleep(5)
 		#if temperature has already been read then
 		print("Please measure your temperature again")
 		self.fsm.transitionState("measureTemperature")
 		#else
 		#display message saying to get a COVID test
+		# send alert to device owner
 		#self.fsm.transitionState("waitForHand")

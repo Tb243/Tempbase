@@ -13,6 +13,8 @@ class StateDispenseSanitiser(state.FsmState):
 
     def onExitState(self):
         print("Leaving the dispense sanitiser state")
+        # Check if sanitiser level is empty
+        # If it is, send an alert to the device owner.
 
     def main(self):
         while True:
