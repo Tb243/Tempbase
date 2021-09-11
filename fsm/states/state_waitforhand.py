@@ -21,4 +21,4 @@ class StateWaitForHand(state.FsmState):
 			if distance < 10:
 				break
 
-		self.fsm.transitionState("dispenceSanitiser")
+		self.fsm.transitionState("dispenseSanitiser")

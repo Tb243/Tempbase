@@ -9,4 +9,8 @@ class StateSetup(state.FsmState):
 
 	def main(self):
 		print("Setting up...")
+
+		#Set up server
+		#Set up database
+		#Set up display
 		self.fsm.transitionState("waitForHand")
