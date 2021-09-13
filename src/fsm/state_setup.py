@@ -8,8 +8,6 @@ class StateSetup(FsmState):
 		self.fsm = fsm
 
 	def main(self):
-		print("Setting up...")
-
 		#Set up server
 		#Set up database
 		#Set up web browser (launch web browser)

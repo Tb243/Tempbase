@@ -8,12 +8,11 @@ class StateMeasureTemperature(FsmState):
 		self.fsm = fsm
 
 	def onEnterState(self, counter):
-		print("Entering the measure temperature state")
 		# mlx90614.setup()
 		self.counter = counter
 
 	def onExitState(self):
-		print("Leaving the measure temperature state")
+		pass
 
 	def main(self):
 		# turn = mlx90614.read()

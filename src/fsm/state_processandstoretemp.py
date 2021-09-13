@@ -9,23 +9,22 @@ class StateProcessAndStoreTemp(FsmState):
         self.fsm = fsm
 
     def onEnterState(self, args):
-        print("Entering the process and store temperature state")
         self.temperature = args[0]
         self.counter = args[1]
         
     def onExitState(self):
-        print("Leaving process and store temperature state")
+        pass
 
     def main(self):
         # add read (temp) value to database
         if self.temperature < 37.6:
             #display green tick
-            print("Your temperature is: ", self.temperature)
-            print("Green Tick being displayed")
+            self.log("Your temperature is: %d" % self.temperature)
+            self.log("Green Tick being displayed")
             time.sleep(0.05)
             self.fsm.transitionState("displayQrCode")
         else : 
-            print("Your temperature is: ", self.temperature)
+            self.log("Your temperature is: %d" % self.temperature)
             self.fsm.transitionState("rejectUser", self.counter)
         
   

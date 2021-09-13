@@ -9,16 +9,15 @@ class StateDisplayQrCode(FsmState):
 		self.fsm = fsm
 
 	def onEnterState(self, args=None):
-		print("Entering the display QR code state")
-		
+		pass
 
 	def onExitState(self):
-		print("Leaving the display QR code state")
+		pass
 
 	def main(self):
 		#display qr code
-		print("QR Code being displayed")
+		self.log("QR Code being displayed")
 		#wait 10 seconds
-		print("waiting 10 seconds")
+		self.log("waiting 10 seconds")
 		time.sleep(10)
 		self.fsm.transitionState("waitForHand")

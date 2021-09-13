@@ -9,12 +9,11 @@ class StateDispenseSanitiser(FsmState):
         self.fsm = fsm
 
     def onEnterState(self, counter):
-        print("Entering the dispense sanitiser state")
         # src04.setup()
         self.counter = counter
 
     def onExitState(self):
-        print("Leaving the dispense sanitiser state")
+        pass
         # Check if sanitiser level is empty
         # If it is, send an alert to the device owner.
 

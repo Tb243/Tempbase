@@ -9,21 +9,20 @@ class StateRejectUser(FsmState):
         self.fsm = fsm
 
     def onEnterState(self, counter):
-        print("Entering the reject user state")
         self.counter = counter
 
     def onExitState(self):
-        print("Leaving the reject user state")
+        pass
 
     def main(self):
         #display red cross
-        print("Displaying red cross")
+        self.log("Displaying red cross")
         time.sleep(5)
         #print("Counter is: ", self.counter)
         if self.counter == 1:
-            print("Please measure your temperature again")
+            self.log("Please measure your temperature again")
             self.fsm.transitionState("measureTemperature", self.counter)
         else:
-            print("Temperature is too high please take a COVID test and isolate")
+            self.log("Temperature is too high please take a COVID test and isolate")
             # send alert to device owner
             self.fsm.transitionState("waitForHand")

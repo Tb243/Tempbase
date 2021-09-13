@@ -1,4 +1,4 @@
-from main import VIRTUAL_MODE, DEBUG_ON
+from main import VIRTUAL_MODE
 from fsm.state import FsmState
 import time
 
@@ -14,7 +14,6 @@ class StateWaitForHand(FsmState):
         self.label = "Wait for hand"
         self.fsm = fsm
         self.hcsr04 = HCSR04()
-        self.debugMode = DEBUG_ON
 
     def onEnterState(self, args=None):
         self.hcsr04.setup()
