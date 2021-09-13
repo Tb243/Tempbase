@@ -14,7 +14,7 @@ class StateMeasureTemperature(FsmState):
 		self.identifier = "measureTemperature"
 		self.label = "Measure Temperature"
 		self.fsm = fsm
-		self.temperatureSensor = self.mlx
+		self.temperatureSensor = MLX90614
 
 	def onEnterState(self, counter):
 		# mlx90614.setup()
