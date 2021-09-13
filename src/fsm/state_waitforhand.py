@@ -1,6 +1,6 @@
-from states import state
+from fsm.state import FsmState
 
-class StateWaitForHand(state.FsmState):
+class StateWaitForHand(FsmState):
 
     def __init__(self, fsm):
         self.identifier = "waitForHand"

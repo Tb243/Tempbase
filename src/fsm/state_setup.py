@@ -1,6 +1,6 @@
-from states import state
+from fsm.state import FsmState
 
-class StateSetup(state.FsmState):
+class StateSetup(FsmState):
 
 	def __init__(self, fsm):
 		self.identifier = "setup"

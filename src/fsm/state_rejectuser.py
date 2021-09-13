@@ -1,7 +1,7 @@
-from states import state
+from fsm.state import FsmState
 import time
 
-class StateRejectUser(state.FsmState):
+class StateRejectUser(FsmState):
 
     def __init__(self, fsm):
         self.identifier = "rejectUser"

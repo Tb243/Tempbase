@@ -1,10 +1,12 @@
-from states import state_setup
-from states import state_waitforhand
-from states import state_dispensesanitiser
-from states import state_measuretemperature
-from states import state_processandstoretemp
-from states import state_displayqrcode
-from states import state_rejectuser
+from fsm import state_setup
+from fsm import state_waitforhand
+from fsm import state_dispensesanitiser
+from fsm import state_measuretemperature
+from fsm import state_processandstoretemp
+from fsm import state_displayqrcode
+from fsm import state_rejectuser
+
+VIRTUAL_MODE = True
 
 class Fsm:
 

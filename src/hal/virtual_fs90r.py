@@ -1,4 +1,4 @@
-from devices.device import Device
+from hal.device import Device
 import time
 
 class VirtualFS90R(Device):

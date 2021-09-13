@@ -1,7 +1,7 @@
-from states import state
+from fsm.state import FsmState
 import time
 
-class StateDisplayQrCode(state.FsmState):
+class StateDisplayQrCode(FsmState):
 
 	def __init__(self, fsm):
 		self.identifier = "displayQrCode"

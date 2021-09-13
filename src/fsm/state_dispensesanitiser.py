@@ -1,6 +1,7 @@
-from states import state
+from fsm.state import FsmState
+from hal import virtual_hcsr04
 
-class StateDispenseSanitiser(state.FsmState):
+class StateDispenseSanitiser(FsmState):
 
     def __init__(self, fsm):
         self.identifier = "dispenseSanitiser"

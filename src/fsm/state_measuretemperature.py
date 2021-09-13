@@ -1,6 +1,6 @@
-from states import state
+from fsm.state import FsmState
 
-class StateMeasureTemperature(state.FsmState):
+class StateMeasureTemperature(FsmState):
 
 	def __init__(self, fsm):
 		self.identifier = "measureTemperature"
