@@ -1,3 +1,4 @@
+import os
 from fsm import state_setup
 from fsm import state_waitforhand
 from fsm import state_dispensesanitiser
@@ -6,8 +7,8 @@ from fsm import state_processandstoretemp
 from fsm import state_displayqrcode
 from fsm import state_rejectuser
 
-VIRTUAL_MODE = True
-DEBUG_ON = True
+VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
+DEBUG_MODE = True if os.environ.get("debugMode") == "on" else False
 
 class Fsm:
 
@@ -16,7 +17,7 @@ class Fsm:
         self.currentState = None
 
     def log(self, message):
-        if DEBUG_ON:
+        if DEBUG_MODE:
             print("FSM: " + message)
 
     def addState(self, state):
@@ -48,25 +49,20 @@ class Fsm:
 
 if __name__ == "__main__":
     fsm = Fsm()
+
+    # Initial setup state
     fsm.addState(state_setup.StateSetup(fsm))
+
+    # Main behaviour states
     fsm.addState(state_waitforhand.StateWaitForHand(fsm))
-
-    fsm.addState(state_setup.StateSetup(fsm))
     fsm.addState(state_dispensesanitiser.StateDispenseSanitiser(fsm))
-
-    fsm.addState(state_setup.StateSetup(fsm))
     fsm.addState(state_measuretemperature.StateMeasureTemperature(fsm))
-    
-    fsm.addState(state_setup.StateSetup(fsm))
     fsm.addState(state_processandstoretemp.StateProcessAndStoreTemp(fsm))
- 
-    fsm.addState(state_setup.StateSetup(fsm))
     fsm.addState(state_displayqrcode.StateDisplayQrCode(fsm))
-    
-    fsm.addState(state_setup.StateSetup(fsm))
     fsm.addState(state_rejectuser.StateRejectUser(fsm))
 
     # Set initial state
     fsm.transitionState("setup")
     
+    # Spin the FSM
     fsm.spin()
