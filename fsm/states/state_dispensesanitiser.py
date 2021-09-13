@@ -7,9 +7,10 @@ class StateDispenseSanitiser(state.FsmState):
         self.label = "Dispense Sanitiser"
         self.fsm = fsm
 
-    def onEnterState(self, args=None):
+    def onEnterState(self, counter):
         print("Entering the dispense sanitiser state")
         # src04.setup()
+        self.counter = counter
 
     def onExitState(self):
         print("Leaving the dispense sanitiser state")
@@ -23,4 +24,4 @@ class StateDispenseSanitiser(state.FsmState):
             if turn < 1:
                 break
 
-        self.fsm.transitionState("measureTemperature")
+        self.fsm.transitionState("measureTemperature", self.counter)
