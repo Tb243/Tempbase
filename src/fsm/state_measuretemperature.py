@@ -1,4 +1,12 @@
+import os
 from fsm.state import FsmState
+
+VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
+
+if VIRTUAL_MODE:
+    from hal.virtual_mlx90614 import VirtualMLX90614 as MLX90614
+else:
+    from hal.mlx90614 import MLX90614
 
 class StateMeasureTemperature(FsmState):
 
@@ -6,16 +14,19 @@ class StateMeasureTemperature(FsmState):
 		self.identifier = "measureTemperature"
 		self.label = "Measure Temperature"
 		self.fsm = fsm
+		self.temperatureSensor = self.mlx
 
 	def onEnterState(self, counter):
 		# mlx90614.setup()
 		self.counter = counter
+        self.temperatureSensor.setup()
 
 	def onExitState(self):
 		pass
 
 	def main(self):
-		# turn = mlx90614.read()
+		# read = mlx90614.read()
+		self.temperatureSensor.read()
 		read = float(input("Enter temperature value: "))
 		self.counter += 1
 		#print("Counter is: ", self.counter)
