@@ -4,6 +4,7 @@ class FsmState:
 		self.identifier = "__unique__identifier__"
 		self.label = "__STATE_LABEL__"
 		self.fsm = fsm
+		self.debugMode = False
 
 	def onEnterState(self, args=None):
 		pass
@@ -13,3 +14,7 @@ class FsmState:
 
 	def main(self):
 		pass
+
+	def log(self, message):
+		if self.debugMode:
+			print("\t" + self.label + ": " + message)
