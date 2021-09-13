@@ -1,4 +1,4 @@
-from devices.device import Device
+from hal.device import Device
 import time
 import random
 
@@ -21,4 +21,4 @@ class VirtualSEN0368(Device):
 
     def read(self):
         time.sleep(0.00001)
-        return random.uniform(0.5, 15.0)
+        return round(random.uniform(0, 1))

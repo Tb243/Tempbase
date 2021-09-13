@@ -1,6 +1,6 @@
-from states import state
+from fsm.state import FsmState
 
-class StateMeasureTemperature(state.FsmState):
+class StateMeasureTemperature(FsmState):
 
 	def __init__(self, fsm):
 		self.identifier = "measureTemperature"
@@ -8,12 +8,11 @@ class StateMeasureTemperature(state.FsmState):
 		self.fsm = fsm
 
 	def onEnterState(self, counter):
-		print("Entering the measure temperature state")
 		# mlx90614.setup()
 		self.counter = counter
 
 	def onExitState(self):
-		print("Leaving the measure temperature state")
+		pass
 
 	def main(self):
 		# turn = mlx90614.read()

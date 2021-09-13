@@ -1,18 +1,18 @@
 import unittest
 import sys
-from devices import virtual_hcsr04
-from devices import virtual_mlx90614
-from devices import virtual_buzzer5v
-from devices import virtual_fs90r
-from devices import virtual_sen0368
+from hal import virtual_hcsr04
+from hal import virtual_mlx90614
+from hal import virtual_buzzer5v
+from hal import virtual_fs90r
+from hal import virtual_sen0368
 
 # Physical devices should each be wrapped in try except blocks
 try:
-    from devices import hcsr04
-    from devices import mlx90614
-    from devices import buzzer5v
-    from devices import fs90r
-    from devices import sen0368
+    from hal import hcsr04
+    from hal import mlx90614
+    from hal import buzzer5v
+    from hal import fs90r
+    from hal import sen0368
 except:
     pass
 

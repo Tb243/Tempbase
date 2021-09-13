@@ -1,3 +1,6 @@
+import os
+DEBUG_MODE = True if os.environ.get("debugMode") == "on" else False
+
 class FsmState:
 
 	def __init__(self, fsm):
@@ -13,3 +16,7 @@ class FsmState:
 
 	def main(self):
 		pass
+
+	def log(self, message):
+		if DEBUG_MODE:
+			print("\t" + self.label + ": " + message)

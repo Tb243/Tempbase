@@ -1,6 +1,6 @@
-from states import state
+from fsm.state import FsmState
 
-class StateSetup(state.FsmState):
+class StateSetup(FsmState):
 
 	def __init__(self, fsm):
 		self.identifier = "setup"
@@ -8,8 +8,6 @@ class StateSetup(state.FsmState):
 		self.fsm = fsm
 
 	def main(self):
-		print("Setting up...")
-
 		#Set up server
 		#Set up database
 		#Set up web browser (launch web browser)
