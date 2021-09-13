@@ -1,4 +1,11 @@
+from main import VIRTUAL_MODE, DEBUG_ON
 from fsm.state import FsmState
+import time
+
+if VIRTUAL_MODE:
+    from hal.virtual_hcsr04 import VirtualHCSR04 as HCSR04
+else:
+    from hal.hcsr04 import HCSR04
 
 class StateWaitForHand(FsmState):
 
@@ -6,22 +13,23 @@ class StateWaitForHand(FsmState):
         self.identifier = "waitForHand"
         self.label = "Wait for hand"
         self.fsm = fsm
+        self.hcsr04 = HCSR04()
+        self.debugMode = DEBUG_ON
 
     def onEnterState(self, args=None):
-        print("Entering the wait for hand state")
-        # src04.setup()
-        
+        self.hcsr04.setup()
 
     def onExitState(self):
-        print("Leaving the wait for hand state")
+        pass
 
     def main(self):
         counter = 0
-        #print("Counter is: ", counter)
         while True:
-            # distance = src04.read()
-            distance = float(input("Enter distance: "))
+            distance = self.hcsr04.read()
+            self.log("Distance to hand: %f" % distance)
             if distance < 10:
                 break
+            time.sleep(0.5)
+
 
         self.fsm.transitionState("dispenseSanitiser", counter)
