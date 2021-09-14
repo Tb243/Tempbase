@@ -14,18 +14,18 @@ class StateMeasureTemperature(FsmState):
         self.identifier = "measureTemperature"
         self.label = "Measure Temperature"
         self.fsm = fsm
-        self.temperatureSensor = MLX90614
+        self.temperatureSensor = MLX90614()
 
     def onEnterState(self, counter):
         self.counter = counter
-        #self.temperatureSensor.setup()
+        self.temperatureSensor.setup()
 
     def onExitState(self):
         pass
 
     def main(self):
-        #read = float(self.temperatureSensor.read())
-        read = float(input("Enter temperature value: "))
+        read = self.temperatureSensor.read()
+        #read = float(input("Enter temperature value: "))
         self.counter += 1
         #print("Counter is: ", self.counter)
         self.fsm.transitionState("processAndStoreTemperature", [read, self.counter])
