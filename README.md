@@ -13,7 +13,7 @@ pip3 install --user git+https://github.com/Pithikos/python-websocket-server
 You will need to install a recent version of [Node.js](https://nodejs.org). Afterwards, simply execute the following to install package dependencies
 
 ```bash
-cd web/front
+cd src/web/front
 npm i
 ```
 
