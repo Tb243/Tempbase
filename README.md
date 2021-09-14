@@ -1,5 +1,13 @@
 # Tempbase
 
+## Setting up the web server
+
+You need to install a Python websocket server library.
+
+```bash
+pip3 install --user git+https://github.com/Pithikos/python-websocket-server
+```
+
 ## Setting up the web front-end
 
 You will need to install a recent version of [Node.js](https://nodejs.org). Afterwards, simply execute the following to install package dependencies
