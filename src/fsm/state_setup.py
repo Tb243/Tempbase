@@ -1,4 +1,6 @@
 from fsm.state import FsmState
+from web.http_server import HttpServer
+import os
 
 class StateSetup(FsmState):
 
@@ -6,6 +8,8 @@ class StateSetup(FsmState):
 		self.identifier = "setup"
 		self.label = "Setup"
 		self.fsm = fsm
+		self.httpServer = HttpServer("0.0.0.0", 5000, os.path.dirname(os.path.realpath(__file__)) + "/../web/public/dist")
+		self.httpServer.openBrowser()
 
 	def main(self):
 		#Set up server
