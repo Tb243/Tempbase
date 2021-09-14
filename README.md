@@ -1,5 +1,28 @@
 # Tempbase
 
+## Setting up the web front-end
+
+You will need to install a recent version of [Node.js](https://nodejs.org). Afterwards, simply execute the following to install package dependencies
+
+```bash
+cd web/front
+npm i
+```
+
+You can now run the front-end build system.
+
+__To run the build system in watch mode__
+
+```bash
+npm run start
+```
+
+__To build for production mode__
+
+```bash
+npm run build
+```
+
 ## Running unit tests
 
 Unit tests are available for virtual and physical devices in the hardware abstraction layer. Physical devices will only be loaded
