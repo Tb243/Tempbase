@@ -34,6 +34,6 @@ class HttpServer:
 		webbrowser.open("http://localhost:5000/", 2)
 
 if __name__ == "__main__":
-	server = HttpServer("0.0.0.0", 5000, os.path.dirname(os.path.realpath(__file__)) + "/public/dist")
+	server = HttpServer("0.0.0.0", 5000, os.path.dirname(os.path.realpath(__file__)) + "/front/build")
 	while True:
 		time.sleep(1)

@@ -8,7 +8,7 @@ class StateSetup(FsmState):
 		self.identifier = "setup"
 		self.label = "Setup"
 		self.fsm = fsm
-		self.httpServer = HttpServer("0.0.0.0", 5000, os.path.dirname(os.path.realpath(__file__)) + "/../web/public/dist")
+		self.httpServer = HttpServer("0.0.0.0", 5000, os.path.dirname(os.path.realpath(__file__)) + "/../web/front/build")
 		self.httpServer.openBrowser()
 
 	def main(self):
