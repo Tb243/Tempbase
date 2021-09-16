@@ -2,6 +2,7 @@ import React from 'react';
 
 // Import your screens here.
 import StateSetupScreen from "./screens/StateSetupScreen";
+import WaitForHandScreen from "./screens/WaitForHandScreen";
 
 import './App.css';
 
@@ -29,6 +30,8 @@ class App extends React.Component<TProps, TState> {
 		switch (this.state.screen) {
 			case "setup":
 				return <StateSetupScreen data={this.state.data} />
+			case "waitForHand":
+				return <WaitForHandScreen data={this.state.data} />
 
 			// Add your screens here.
 
