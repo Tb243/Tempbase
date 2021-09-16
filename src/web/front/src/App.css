@@ -1,0 +1,21 @@
+.app {
+	text-align: center;
+}
+
+.app footer {
+	position: fixed;
+	left: 0;
+	top: 0;
+	max-width: 640px;
+	padding: 0.5em;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.app footer pre {
+	font-size: 10px;
+	font-weight: bold;
+	margin: 0 0 5px;
+	font-family: monospace;
+	color: #eee;
+	text-align: left;
+}

@@ -20,7 +20,6 @@ class StateDispenseSanitiser(FsmState):
         self.liquidSensor = SEN0368(20)
 
     def onEnterState(self, counter):
-        # src04.setup()
         self.counter = counter
         self.servoMotor.setup()
         self.liquidSensor.setup()

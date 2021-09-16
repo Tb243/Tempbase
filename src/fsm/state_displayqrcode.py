@@ -1,5 +1,8 @@
+import os
 from fsm.state import FsmState
 import time
+
+VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
 class StateDisplayQrCode(FsmState):
 

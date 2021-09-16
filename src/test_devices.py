@@ -104,7 +104,7 @@ class TestVirtualMLX90614(unittest.TestCase, DeviceTests):
     def testRead(self):
         try:
             value = self.device.read()
-            self.assertTrue(value >= -20 and value <= 100)
+            self.assertTrue(value >= 0 and value <= 40)
         except:
             self.fail("read() has not been implemented for device %s" % self.device.name)
 

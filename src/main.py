@@ -15,6 +15,11 @@ class Fsm:
     def __init__(self):
         self.states = {}
         self.currentState = None
+        self.stateData = {}
+        self.stateHooks = []
+
+    def addStateHook(self, fn):
+        self.stateHooks.append(fn)
 
     def log(self, message):
         if DEBUG_MODE:
@@ -22,6 +27,15 @@ class Fsm:
 
     def addState(self, state):
         self.states[state.identifier] = state
+
+    def setStateData(self, key, val):
+        self.stateData[key] = val
+        self.callStateHooks
+
+    def callStateHooks(self):
+        if len(self.stateHooks) > 0:
+            for fn in self.stateHooks:
+                fn(self.currentState, self.stateData)
 
     def transitionState(self, nextState, args=None):
         if not nextState in self.states:
@@ -35,6 +49,8 @@ class Fsm:
         self.currentState = nextState
         self.log("Calling onEnterState for state '%s'" % self.currentState)
         self.states[self.currentState].onEnterState(args)
+
+        self.callStateHooks()
 
     def spin(self):
         if not self.currentState:
