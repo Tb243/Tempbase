@@ -25,6 +25,7 @@ class StateWaitForHand(FsmState):
         counter = 0
         while True:
             distance = self.hcsr04.read()
+            self.fsm.setStateData("ultrasonicDistance", distance)
             self.log("Distance to hand: %f" % distance)
             if distance < 10:
                 break
