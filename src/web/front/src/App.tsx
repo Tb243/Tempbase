@@ -1,11 +1,16 @@
 import React from 'react';
+
+import StateSetupScreen from "./screens/StateSetupScreen";
+
 import './App.css';
 
 type TProps = {};
 type TState = {
-	screen: "setup" | "waitForHand" | "rejectUser" | "processAndStoreTemperature" | "measureTemperature" | "displayQrCode" | "dispenseSanitiser";
-	data: any;
+	screen: TTempBaseScreens;
+	data: TTempBaseFsmData;
 };
+
+const DEBUG = true;
 
 class App extends React.Component<TProps, TState> {
 	private socket?: WebSocket;
@@ -60,16 +65,31 @@ class App extends React.Component<TProps, TState> {
 		});
 	}
 
+	getScreen() {
+		switch (this.state.screen) {
+			case "setup":
+				return <StateSetupScreen data={this.state.data} />
+		}
+
+		return (
+			<p>No "{this.state.screen}" screen is connected!</p>
+		);
+	}
+
 	public render() {
 		return (
-			<div className="App">
-				<header className="App-header">
-					<p>
-						The current FSM state is <code>{this.state.screen}</code>
-					</p>
-					<p>FSM State Data</p>
-					<code>{Object.keys(this.state.data).length > 0 ? JSON.stringify(this.state.data, null, 4) : ""}</code>
-				</header>
+			<div className="app">
+				<div className="screen">
+					{this.getScreen()}
+				</div>
+
+				{DEBUG ? (
+					<footer>
+						<pre>Screen: {this.state.screen}</pre>
+						<pre>FSM Data:</pre>
+						<pre>{JSON.stringify(this.state.data, null, 4)}</pre>
+					</footer>
+				) : null}
 			</div>
 		);
 	}
