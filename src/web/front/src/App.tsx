@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Import your screens here.
 import StateSetupScreen from "./screens/StateSetupScreen";
 
 import './App.css';
@@ -22,6 +23,20 @@ class App extends React.Component<TProps, TState> {
 			screen: "setup",
 			data: {}
 		};
+	}
+
+	getScreen() {
+		switch (this.state.screen) {
+			case "setup":
+				return <StateSetupScreen data={this.state.data} />
+
+			// Add your screens here.
+
+		}
+
+		return (
+			<p>No "{this.state.screen}" screen is connected!</p>
+		);
 	}
 
 	public componentDidMount() {
@@ -63,17 +78,6 @@ class App extends React.Component<TProps, TState> {
 				console.log(e);
 			}
 		});
-	}
-
-	getScreen() {
-		switch (this.state.screen) {
-			case "setup":
-				return <StateSetupScreen data={this.state.data} />
-		}
-
-		return (
-			<p>No "{this.state.screen}" screen is connected!</p>
-		);
 	}
 
 	public render() {
