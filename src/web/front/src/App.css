@@ -1,5 +1,18 @@
+body {
+	background: #666;
+	margin: 0;
+	padding: 0;
+}
+
 .app {
 	text-align: center;
+	width: 480px;
+	height: 320px;
+	background: #aaa;
+}
+
+.screen p {
+	margin: 0 0 1em;
 }
 
 .app footer {
@@ -18,4 +31,8 @@
 	font-family: monospace;
 	color: #eee;
 	text-align: left;
+}
+
+.screenWaitForHand {
+	background-color: red;
 }
