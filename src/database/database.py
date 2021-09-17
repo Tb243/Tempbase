@@ -1,6 +1,9 @@
 import sqlite3
 import os
 
+schemaPath = os.path.dirname(os.path.realpath(__file__)) + "/schema/tempbase.dbsqlite.sql"
+dbPath = os.path.dirname(os.path.realpath(__file__)) + "/tempbase.db"
+
 def dict_factory(cursor, row):
     d = {}
     for idx, col in enumerate(cursor.description):
@@ -23,9 +26,9 @@ class Database:
 		if self.exists:
 			return
 
-		with open("./schema/tempbase.dbsqlite.sql", "r") as fh:
+		with open(schemaPath, "r") as fh:
 			for transaction in fh.read().split(";"):
 				self.connection.execute(transaction)
 
-ActiveDatabase = Database("tempbase.db")
+ActiveDatabase = Database(dbPath)
 ActiveDatabase.autoSetup()
