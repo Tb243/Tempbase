@@ -3,4 +3,5 @@ type TTempBaseScreens = "setup" | "waitForHand" | "rejectUser" | "processAndStor
 type TTempBaseFsmData = {
 	ultrasonicDistance?: number;
 	temperatureMeasurement?: number;
+	QRCodeValue?: string;
 };
