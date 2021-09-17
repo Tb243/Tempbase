@@ -1,0 +1,15 @@
+{
+	"QRCodeValue": "https://service.vic.gov.au/check-in",
+	"email": {
+		"transport": {
+			"smtpServer": "smtp.gmail.com",
+			"smtpPort": 587,
+			"username": "tempbasenotifications@gmail.com",
+			"password": "sit312project"
+		},
+		"recipients": [
+			"tempbasenotifications@gmail.com",
+			"rdoug@deakin.edu.au"
+		]
+	}
+}
