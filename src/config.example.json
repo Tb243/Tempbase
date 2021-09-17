@@ -11,5 +11,20 @@
 			"tempbasenotifications@gmail.com",
 			"rdoug@deakin.edu.au"
 		]
+	},
+	"hal": {
+		"HCSR04": {
+			"echoPin": 13,
+			"triggerPin": 6
+		},
+		"BUZZER": {
+			"pin": 26
+		},
+		"FS90R": {
+			"pin": 12
+		},
+		"SEN0368": {
+			"pin": 20
+		}
 	}
 }
