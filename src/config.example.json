@@ -26,5 +26,8 @@
 		"SEN0368": {
 			"pin": 20
 		}
+	},
+	"health": {
+		"maxTemperatureThreshold": 37.6
 	}
 }
