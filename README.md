@@ -74,3 +74,13 @@ __Physical devices, debugging turned off:__
 cd src
 ./run-physical.sh
 ```
+
+__Setting up SMS:__
+
+//Documentation: https://www.twilio.com/docs/sms/quickstart/python#install-python-and-the-twilio-helper-library//
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew tap twilio/brew && brew install twilio
+pip install twilio
+```
