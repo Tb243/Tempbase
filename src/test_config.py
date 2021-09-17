@@ -46,6 +46,11 @@ class DeviceTests(unittest.TestCase):
 		self.assertTrue("pin" in config["hal"]["SEN0368"])
 		self.assertTrue(isinstance(config["hal"]["SEN0368"]["pin"], int))
 
+	def test_health(self):
+		self.assertTrue("health" in config)
+		self.assertTrue("maxTemperatureThreshold" in config["health"])
+		self.assertTrue(isinstance(config["health"]["maxTemperatureThreshold"], int))
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
