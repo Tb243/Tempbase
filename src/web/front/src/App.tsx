@@ -3,8 +3,12 @@ import React from 'react';
 // Import your screens here.
 import StateSetupScreen from "./screens/StateSetupScreen";
 import WaitForHandScreen from "./screens/WaitForHandScreen";
+import DispenseSanitiserScreen from './screens/DispenseSanitiser';
+import MeasureTemperatureScreen from './screens/MeasureTemperature';
+import RejectUserScreen from './screens/RejectUser';
 
 import './App.css';
+
 
 type TProps = {};
 type TState = {
@@ -32,6 +36,12 @@ class App extends React.Component<TProps, TState> {
 				return <StateSetupScreen data={this.state.data} />
 			case "waitForHand":
 				return <WaitForHandScreen data={this.state.data} />
+			case "dispenseSanitiser":
+				return <DispenseSanitiserScreen data={this.state.data} />
+			case "measureTemperature":
+				return <MeasureTemperatureScreen data={this.state.data} />
+			case "rejectUser":
+				return <RejectUserScreen data={this.state.data} />
 
 			// Add your screens here.
 
