@@ -4,9 +4,10 @@ import time
 
 class buzzer5v(Device):
 
-    def __init__(self):
+    def __init__(self, buzzerPin):
         self.name = "BUZZER5V"
         self.isVirtual = False
+        self.buzzerPin = buzzerPin
 
     def validateConfig(self):
         return True

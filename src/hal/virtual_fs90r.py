@@ -3,7 +3,7 @@ import time
 
 class VirtualFS90R(Device):
 
-	def __init__(self, servoPin=None): 
+	def __init__(self, servoPin): 
 		self.name = "Virtual FS90R"
 		self.isVirtual = True
 		self.servoPin = servoPin
