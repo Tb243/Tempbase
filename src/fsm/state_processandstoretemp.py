@@ -1,8 +1,6 @@
-import os
 from fsm.state import FsmState
+from config import config
 import time
-
-VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
 class StateProcessAndStoreTemp(FsmState):
 
@@ -20,7 +18,7 @@ class StateProcessAndStoreTemp(FsmState):
 
     def main(self):
         # add read (temp) value to database
-        if self.temperature < 37.6:
+        if self.temperature < config["health"]["maxTemperatureThreshold"]:
             #display green tick
             self.log("Your temperature is: %d" % self.temperature)
             self.log("Green Tick being displayed")
@@ -29,8 +27,4 @@ class StateProcessAndStoreTemp(FsmState):
         else : 
             self.log("Your temperature is: %d" % self.temperature)
             self.fsm.transitionState("rejectUser", self.counter)
-        
-  
-         
-
         

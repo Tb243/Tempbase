@@ -1,6 +1,7 @@
 from fsm.state import FsmState
 from web.http_server import HttpServer
 from web.wss_server import WSServer
+from config import config
 import os
 
 class StateSetup(FsmState):
@@ -13,6 +14,8 @@ class StateSetup(FsmState):
 		self.wsServer = WSServer("0.0.0.0", 8080)
 		self.fsm.addStateHook(self.onStateChange)
 		self.httpServer.openBrowser()
+		print("Set up config")
+		print(config)
 
 	def onStateChange(self, state, stateData):
 		self.wsServer.broadcast({
