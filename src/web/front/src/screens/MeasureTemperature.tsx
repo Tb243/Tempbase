@@ -8,7 +8,7 @@ export default class MeasureTemperatureScreen extends React.Component<TProps> {
 	render() {
 		return (
 			<div className="screenMeasureTemperature">
-				<p>This is the measure temperature screen and the temperature of the user is {this.props.data.ultrasonicDistance}</p>
+				<p>This is the measure temperature screen</p>
 			</div>
 		);
 	}
