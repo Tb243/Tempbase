@@ -17,4 +17,4 @@ class VirtualMLX90614(Device):
 		pass
 
 	def read(self):
-		return random.uniform(0, 40)
+		return random.uniform(35, 45)
