@@ -3,7 +3,6 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-#https://anthscomputercave.com/projects/aaimi/email/aaimi_email_out.html
 
 class Notifications:
     
@@ -17,10 +16,9 @@ class Notifications:
     def setup():
         pass
         
-    # Send alerts to users. Requires dedicated Gmail account for AAIMI      
+    # Send email alerts to users. Requires dedicated Gmail account for AAIMI      
     def email_notify(self, sub, arg1, arg2, arg3=""):
         
-        #global system_email, system_pass
         
         if self.system_pass != "":    
             # Create HTML head for email 
