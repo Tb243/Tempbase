@@ -23,6 +23,6 @@ class fs90r(Device):
 	def turn(self):
 		pwm = GPIO.PWM(self.servoPin, 50)
 		pwm.start(0)
-  		pwm.ChangeDutyCycle(20.4)
+		pwm.ChangeDutyCycle(20.4)
 		time.sleep(1)
-    	pwm.stop()
+		pwm.stop()
