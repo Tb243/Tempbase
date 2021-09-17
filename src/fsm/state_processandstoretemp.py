@@ -24,7 +24,7 @@ class StateProcessAndStoreTemp(FsmState):
             #display green tick
             self.log("Your temperature is: %d" % self.temperature)
             self.log("Green Tick being displayed")
-            time.sleep(0.05)
+            time.sleep(2)
             self.fsm.transitionState("displayQrCode")
         else : 
             self.log("Your temperature is: %d" % self.temperature)

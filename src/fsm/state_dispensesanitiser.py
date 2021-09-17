@@ -1,5 +1,6 @@
 import os
 from fsm.state import FsmState
+import time
 
 VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
@@ -31,6 +32,7 @@ class StateDispenseSanitiser(FsmState):
 
     def main(self):
         self.servoMotor.turn()
+        time.sleep(2)
         self.fsm.transitionState("measureTemperature", self.counter)
 
     def sendAlert(self):

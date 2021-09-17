@@ -29,7 +29,7 @@ class StateWaitForHand(FsmState):
             self.log("Distance to hand: %f" % distance)
             if distance < 10:
                 break
-            time.sleep(0.5)
+            time.sleep(2)
 
 
         self.fsm.transitionState("dispenseSanitiser", counter)
