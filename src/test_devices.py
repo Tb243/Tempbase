@@ -60,11 +60,12 @@ if "mlx90614" in sys.modules:
 if "buzzer5v" in sys.modules:
     class TestPhysicalBUZZER5V(unittest.TestCase, DeviceTests):
         def setUp(self):
-            self.device = buzzer5v.BUZZER5V()
+            self.device = buzzer5v.BUZZER5V(config["hal"]["BUZZER"]["pin"])
+
 if "fs90r" in sys.modules:
     class TestPhysicalFS90R(unittest.TestCase, DeviceTests):
         def setUp(self):
-            self.device = fs90r.FS90R()
+            self.device = fs90r.FS90R(config["hal"]["FS90R"]["pin"])
             try:
                 self.device.setup()
             except:
@@ -73,7 +74,7 @@ if "fs90r" in sys.modules:
 if "sen0368" in sys.modules:
     class TestPhysicalSEN0368(unittest.TestCase, DeviceTests):
         def setUp(self):
-            self.device = sen0368.SEN0368()
+            self.device = sen0368.SEN0368(config["hal"]["SEN0368"]["pin"])
             try:
                 self.device.setup()
             except:
@@ -106,7 +107,7 @@ class TestVirtualMLX90614(unittest.TestCase, DeviceTests):
 class TestVirtualBuzzer5v(unittest.TestCase, DeviceTests):
     
     def setUp(self):
-        self.device = virtual_buzzer5v.VirtualBUZZER5V()
+        self.device = virtual_buzzer5v.VirtualBUZZER5V(config["hal"]["BUZZER"]["pin"])
     
     def testBuzz(self):
         try:
@@ -117,7 +118,7 @@ class TestVirtualBuzzer5v(unittest.TestCase, DeviceTests):
 class TestVirtualFS90R(unittest.TestCase, DeviceTests):
     
     def setUp(self):
-        self.device = virtual_fs90r.VirtualFS90R()
+        self.device = virtual_fs90r.VirtualFS90R(config["hal"]["FS90R"]["pin"])
 
     def testTurn(self):
         try:
@@ -128,7 +129,7 @@ class TestVirtualFS90R(unittest.TestCase, DeviceTests):
 class TestVirtualSEN0368(unittest.TestCase, DeviceTests):
     
     def setUp(self):
-        self.device = virtual_sen0368.VirtualSEN0368()
+        self.device = virtual_sen0368.VirtualSEN0368(config["hal"]["SEN0368"]["pin"])
 
     def testRead(self):
         try:
