@@ -1,5 +1,6 @@
 import unittest
 import sys
+import os
 from hal import virtual_hcsr04
 from hal import virtual_mlx90614
 from hal import virtual_buzzer5v
@@ -7,15 +8,15 @@ from hal import virtual_fs90r
 from hal import virtual_sen0368
 from config import config
 
+VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
+
 # Physical devices should each be wrapped in try except blocks
-try:
+if not VIRTUAL_MODE:
     from hal import hcsr04
     from hal import mlx90614
     from hal import buzzer5v
     from hal import fs90r
     from hal import sen0368
-except:
-    pass
 
 class DeviceTests:
     def testSetup(self):
@@ -39,16 +40,15 @@ class DeviceTests:
 
 # This needs to be wrapped to prevent tests from crashing on
 # devices that don't have RPi.GPIO installed.
-if "hcsr04" in sys.modules:
+if not VIRTUAL_MODE:
     class TestPhysicalHCSR04(unittest.TestCase, DeviceTests):
         def setUp(self):
-            self.device = hcsr04.VirtualHCSR04(config["hal"]["HCSR04"]["echoPin"], config["hal"]["HCSR04"]["triggerPin"])
+            self.device = hcsr04.HCSR04(config["hal"]["HCSR04"]["echoPin"], config["hal"]["HCSR04"]["triggerPin"])
             try:
                 self.device.setup()
             except:
                 pass
 
-if "mlx90614" in sys.modules:
     class TestPhysicalMLX90614(unittest.TestCase, DeviceTests):
         def setUp(self):
             self.device = mlx90614.MLX90614()
@@ -57,12 +57,10 @@ if "mlx90614" in sys.modules:
             except:
                 pass
 
-if "buzzer5v" in sys.modules:
     class TestPhysicalBUZZER5V(unittest.TestCase, DeviceTests):
         def setUp(self):
             self.device = buzzer5v.BUZZER5V(config["hal"]["BUZZER"]["pin"])
 
-if "fs90r" in sys.modules:
     class TestPhysicalFS90R(unittest.TestCase, DeviceTests):
         def setUp(self):
             self.device = fs90r.FS90R(config["hal"]["FS90R"]["pin"])
@@ -71,7 +69,6 @@ if "fs90r" in sys.modules:
             except:
                 pass
             
-if "sen0368" in sys.modules:
     class TestPhysicalSEN0368(unittest.TestCase, DeviceTests):
         def setUp(self):
             self.device = sen0368.SEN0368(config["hal"]["SEN0368"]["pin"])
