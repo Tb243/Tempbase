@@ -14,7 +14,7 @@
 	},
 	"hal": {
 		"HCSR04": {
-			"echoPin": 13,
+			"echoPin": 23,
 			"triggerPin": 6
 		},
 		"BUZZER": {
