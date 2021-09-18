@@ -57,9 +57,9 @@ if not VIRTUAL_MODE:
             except:
                 pass
 
-    class TestPhysicalBUZZER5V(unittest.TestCase, DeviceTests):
+    class TestPhysicalBuzzer5v(unittest.TestCase, DeviceTests):
         def setUp(self):
-            self.device = buzzer5v.BUZZER5V(config["hal"]["BUZZER"]["pin"])
+            self.device = buzzer5v.Buzzer5v(config["hal"]["BUZZER"]["pin"])
 
     class TestPhysicalFS90R(unittest.TestCase, DeviceTests):
         def setUp(self):
