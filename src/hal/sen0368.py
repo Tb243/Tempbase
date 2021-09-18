@@ -8,7 +8,7 @@ class SEN0368(Device):
 	def __init__(self, liquidPin):
 		self.name = "SEN0368"
 		self.isVirtual = False
-  		self.liquidPin = liquidPin
+		self.liquidPin = liquidPin
 
 	def validateConfig(self):
 		return True
