@@ -13,7 +13,7 @@ class testSMSNotifications:
         
         try:
         # This could potentially throw an exception!
-           notifier.sendSMS()
+           notifier.sendSMS(numberTo, "This is a test message")
             
         except TwilioRestException as e:
             # Implement your fallback code
