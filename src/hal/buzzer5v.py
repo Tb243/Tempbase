@@ -2,7 +2,7 @@ from hal.device import Device
 import RPi.GPIO as GPIO
 import time
 
-class buzzer5v(Device):
+class Buzzer5v(Device):
 
 	def __init__(self, buzzerPin):
 		self.name = "BUZZER5V"
@@ -21,10 +21,10 @@ class buzzer5v(Device):
 	def read(self):
 		pass
 
-	def buzz(self):
+	def buzz(self, time):
 		pwm = GPIO.PWM(self.buzzerPin, 50)
 		pwm.start(0)
 		pwm.ChangeDutyCycle(20.4)
-		time.sleep(1)
+		time.sleep(time)
 		pwm.stop()
 
