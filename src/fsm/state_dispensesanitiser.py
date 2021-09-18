@@ -1,5 +1,7 @@
-import os
 from fsm.state import FsmState
+from config import config
+import os
+import time
 
 VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
@@ -16,8 +18,8 @@ class StateDispenseSanitiser(FsmState):
         self.identifier = "dispenseSanitiser"
         self.label = "Dispense Sanitiser"
         self.fsm = fsm
-        self.servoMotor = FS90R(12)
-        self.liquidSensor = SEN0368(20)
+        self.servoMotor = FS90R(config["hal"]["FS90R"]["pin"])
+        self.liquidSensor = SEN0368(config["hal"]["SEN0368"]["pin"])
 
     def onEnterState(self, counter):
         self.counter = counter
@@ -31,6 +33,7 @@ class StateDispenseSanitiser(FsmState):
 
     def main(self):
         self.servoMotor.turn()
+        time.sleep(2)
         self.fsm.transitionState("measureTemperature", self.counter)
 
     def sendAlert(self):

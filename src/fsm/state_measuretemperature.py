@@ -1,5 +1,6 @@
-import os
 from fsm.state import FsmState
+import os
+import time
 
 VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
@@ -24,8 +25,13 @@ class StateMeasureTemperature(FsmState):
         pass
 
     def main(self):
-        read = self.temperatureSensor.read()
-        #read = float(input("Enter temperature value: "))
-        self.counter += 1
-        #print("Counter is: ", self.counter)
+        while True:
+            read = self.temperatureSensor.read()
+            self.fsm.setStateData("temperatureMeasurement", read)
+            #read = float(input("Enter temperature value: "))
+            self.counter += 1
+            time.sleep(2)
+            #print("Counter is: ", self.counter)
+            break
+        
         self.fsm.transitionState("processAndStoreTemperature", [read, self.counter])

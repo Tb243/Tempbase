@@ -4,9 +4,10 @@ import time
 
 class fs90r(Device):
 
-	def __init__(self): 
+	def __init__(self, servoPin): 
 		self.name = "FS90R"
 		self.isVirtual = False
+		self.servoPin = servoPin
 
 	def validateConfig(self):
 		return True
@@ -23,6 +24,6 @@ class fs90r(Device):
 	def turn(self):
 		pwm = GPIO.PWM(self.servoPin, 50)
 		pwm.start(0)
-  		pwm.ChangeDutyCycle(20.4)
+		pwm.ChangeDutyCycle(20.4)
 		time.sleep(1)
-    	pwm.stop()
+		pwm.stop()

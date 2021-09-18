@@ -1,4 +1,4 @@
-from database import ActiveDatabase
+from database.database import ActiveDatabase
 from datetime import datetime
 
 class Model:
@@ -8,7 +8,7 @@ class Model:
 
 	def query(self, query, args, fetch=False):
 		if self.debug:
-			print(query)
+			print("DB: " + query)
 
 		ActiveDatabase.cursor.execute(query, args)
 		ActiveDatabase.connection.commit()

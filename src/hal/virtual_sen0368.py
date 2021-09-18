@@ -4,7 +4,7 @@ import random
 
 class VirtualSEN0368(Device):
 
-    def __init__(self, liquidPin=None):
+    def __init__(self, liquidPin):
         self.name = "Virtual SEN0368"
         self.isVirtual = True
         self.liquidPin = liquidPin

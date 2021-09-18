@@ -3,7 +3,7 @@ import time
 
 class VirtualBUZZER5V(Device):
     
-	def __init__(self, buzzerPin=None):
+	def __init__(self, buzzerPin):
 		self.name = "Virtual BUZZER5V"
 		self.isVirtual = True
 		self.buzzerPin = buzzerPin

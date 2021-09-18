@@ -1,5 +1,12 @@
 # Tempbase
 
+## Setting up the configuration file
+
+You must setup a configuration file first. To do this, you can simply copy `src/config.example.json` to `src/config.json` and edit the file to include
+an email password.
+
+You can test the configuration you have entered using `python3 test_config.py`
+
 ## Setting up the web server
 
 You need to install a Python websocket server library.
@@ -73,4 +80,14 @@ __Physical devices, debugging turned off:__
 ```
 cd src
 ./run-physical.sh
+```
+
+__Setting up SMS:__
+
+//Documentation: https://www.twilio.com/docs/sms/quickstart/python#install-python-and-the-twilio-helper-library//
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew tap twilio/brew && brew install twilio
+pip install twilio
 ```

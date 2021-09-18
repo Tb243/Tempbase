@@ -1,5 +1,6 @@
-from main import VIRTUAL_MODE
 from fsm.state import FsmState
+from config import config
+from main import VIRTUAL_MODE
 import time
 
 if VIRTUAL_MODE:
@@ -13,7 +14,7 @@ class StateWaitForHand(FsmState):
         self.identifier = "waitForHand"
         self.label = "Wait for hand"
         self.fsm = fsm
-        self.hcsr04 = HCSR04()
+        self.hcsr04 = HCSR04(config["hal"]["HCSR04"]["echoPin"], config["hal"]["HCSR04"]["triggerPin"])
 
     def onEnterState(self, args=None):
         self.hcsr04.setup()
@@ -29,7 +30,7 @@ class StateWaitForHand(FsmState):
             self.log("Distance to hand: %f" % distance)
             if distance < 10:
                 break
-            time.sleep(0.5)
+            time.sleep(2)
 
 
         self.fsm.transitionState("dispenseSanitiser", counter)

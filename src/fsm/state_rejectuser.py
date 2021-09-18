@@ -32,10 +32,12 @@ class StateRejectUser(FsmState):
             self.servoMotor.buzz()
             self.log("BUZZ")
             self.log("Please measure your temperature again")
+            time.sleep(2)
             self.fsm.transitionState("measureTemperature", self.counter)
         else:
             self.log("Temperature is too high please take a COVID test and isolate")
             self.servoMotor.buzz()
             self.log("BUZZ")
+            time.sleep(2)
             # send alert to device owner
             self.fsm.transitionState("waitForHand")
