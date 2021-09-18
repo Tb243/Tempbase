@@ -10,7 +10,7 @@ export default class QrCodeDisplayScreen extends React.Component<TProps> {
 		return (
 			<div className="screenQrCodeDisplay">
 				<p>This is the QR code display screen and this is where the QR code goes</p>
-				<p>Your temperature is {this.props.data.temperatureMeasurement}</p>
+				<p>Your temperature is {this.props.data.temperatureMeasurement?.toFixed(1)}</p>
 
 				<QRCode 
 					value={this.props.data.QRCodeValue!}

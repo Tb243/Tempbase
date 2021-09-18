@@ -9,7 +9,7 @@ export default class RejectUserScreen extends React.Component<TProps> {
 		return (
 			<div className="screenRejectUser">
 				<p>This is the reject user screen</p>
-				<p>Your temperature is {this.props.data.temperatureMeasurement}</p>
+				<p>Your temperature is {this.props.data.temperatureMeasurement?.toFixed(1)}</p>
 			</div>
 		);
 	}
