@@ -2,7 +2,7 @@ from hal.device import Device
 import RPi.GPIO as GPIO
 import time
 
-class fs90r(Device):
+class FS90R(Device):
 
 	def __init__(self, servoPin): 
 		self.name = "FS90R"
