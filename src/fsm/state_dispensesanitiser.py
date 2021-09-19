@@ -6,10 +6,10 @@ import time
 VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
 if VIRTUAL_MODE:
-    from hal.virtual_fs90r import VirtualFS90R as FS90R
+    from hal.virtual_pump import VirtualPUMP as PUMP
     from hal.virtual_sen0368 import VirtualSEN0368 as SEN0368
 else:
-    from hal.fs90r import FS90R
+    from hal.pump import PUMP
     from hal.sen0368 import SEN0368
 
 class StateDispenseSanitiser(FsmState):
@@ -18,12 +18,12 @@ class StateDispenseSanitiser(FsmState):
         self.identifier = "dispenseSanitiser"
         self.label = "Dispense Sanitiser"
         self.fsm = fsm
-        self.servoMotor = FS90R(config["hal"]["FS90R"]["pin"])
+        self.pump = PUMP(config["hal"]["PUMP"]["pin"])
         self.liquidSensor = SEN0368(config["hal"]["SEN0368"]["pin"])
 
     def onEnterState(self, counter):
         self.counter = counter
-        self.servoMotor.setup()
+        self.pump.setup()
         self.liquidSensor.setup()
 
     def onExitState(self):
@@ -32,7 +32,7 @@ class StateDispenseSanitiser(FsmState):
             self.sendAlert()
 
     def main(self):
-        self.servoMotor.turn()
+        self.pump.run()
         time.sleep(2)
         self.fsm.transitionState("measureTemperature", self.counter)
 
