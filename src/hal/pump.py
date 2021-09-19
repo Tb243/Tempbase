@@ -2,12 +2,12 @@ from hal.device import Device
 import RPi.GPIO as GPIO
 import time
 
-class pump(Device):
+class PUMP(Device):
 
 	def __init__(self, pumpPin): 
 		self.name = "PUMP"
 		self.isVirtual = False
-		self.servoPin = pumpPin
+		self.pumpPin = pumpPin
 
 	def validateConfig(self):
 		return True
