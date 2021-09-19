@@ -8,7 +8,8 @@ export default class DispenseSanitiserScreen extends React.Component<TProps> {
 	render() {
 		return (
 			<div className="screenDispenseSanitiser">
-				<p>This is the dispense sanitiser screen</p>
+				<p>Dispensing sanitiser...</p>
+				<img src="sanitiser.png" alt="hands image"></img>
 			</div>
 		);
 	}

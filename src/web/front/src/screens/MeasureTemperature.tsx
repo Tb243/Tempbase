@@ -8,7 +8,8 @@ export default class MeasureTemperatureScreen extends React.Component<TProps> {
 	render() {
 		return (
 			<div className="screenMeasureTemperature">
-				<p>This is the measure temperature screen</p>
+				<p>Measuring your temperature...</p>
+				<img src="temp.png" alt="thermometer"></img>
 			</div>
 		);
 	}
