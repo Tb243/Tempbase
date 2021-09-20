@@ -1,8 +1,6 @@
-import os
 from fsm.state import FsmState
+from config import config
 import time
-
-VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
 class StateDisplayQrCode(FsmState):
 
@@ -12,7 +10,7 @@ class StateDisplayQrCode(FsmState):
 		self.fsm = fsm
 
 	def onEnterState(self, args=None):
-		pass
+		self.fsm.setStateData("QRCodeValue", config["QRCodeValue"])
 
 	def onExitState(self):
 		pass

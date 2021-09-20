@@ -1,4 +1,5 @@
 import React from "react";
+import QRCode from "qrcode.react";
 
 type TProps = {
 	data: TTempBaseFsmData;

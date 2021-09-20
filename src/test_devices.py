@@ -1,26 +1,22 @@
 import unittest
 import sys
+import os
 from hal import virtual_hcsr04
 from hal import virtual_mlx90614
 from hal import virtual_buzzer5v
 from hal import virtual_fs90r
 from hal import virtual_sen0368
+from config import config
+
+VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
 # Physical devices should each be wrapped in try except blocks
-try:
+if not VIRTUAL_MODE:
     from hal import hcsr04
     from hal import mlx90614
     from hal import buzzer5v
     from hal import fs90r
     from hal import sen0368
-except:
-    pass
-
-HCSR04_ECHO_PIN = 13
-HCSR04_TRIGGER_PIN = 6
-BUZZER5V_BUZZER_PIN = 26
-FS90R_SERVO_PIN = 12
-SEN0368_LIQUID_PIN = 20
 
 class DeviceTests:
     def testSetup(self):
@@ -44,16 +40,15 @@ class DeviceTests:
 
 # This needs to be wrapped to prevent tests from crashing on
 # devices that don't have RPi.GPIO installed.
-if "hcsr04" in sys.modules:
+if not VIRTUAL_MODE:
     class TestPhysicalHCSR04(unittest.TestCase, DeviceTests):
         def setUp(self):
-            self.device = hcsr04.HCSR04(HCSR04_ECHO_PIN, HCSR04_TRIGGER_PIN)
+            self.device = hcsr04.HCSR04(config["hal"]["HCSR04"]["echoPin"], config["hal"]["HCSR04"]["triggerPin"])
             try:
                 self.device.setup()
             except:
                 pass
 
-if "mlx90614" in sys.modules:
     class TestPhysicalMLX90614(unittest.TestCase, DeviceTests):
         def setUp(self):
             self.device = mlx90614.MLX90614()
@@ -62,23 +57,21 @@ if "mlx90614" in sys.modules:
             except:
                 pass
 
-if "buzzer5v" in sys.modules:
-    class TestPhysicalBUZZER5V(unittest.TestCase, DeviceTests):
+    class TestPhysicalBuzzer5v(unittest.TestCase, DeviceTests):
         def setUp(self):
-            self.device = buzzer5v.BUZZER5V()
-if "fs90r" in sys.modules:
+            self.device = buzzer5v.Buzzer5v(config["hal"]["BUZZER"]["pin"])
+
     class TestPhysicalFS90R(unittest.TestCase, DeviceTests):
         def setUp(self):
-            self.device = fs90r.FS90R()
+            self.device = fs90r.FS90R(config["hal"]["FS90R"]["pin"])
             try:
                 self.device.setup()
             except:
                 pass
             
-if "sen0368" in sys.modules:
     class TestPhysicalSEN0368(unittest.TestCase, DeviceTests):
         def setUp(self):
-            self.device = sen0368.SEN0368()
+            self.device = sen0368.SEN0368(config["hal"]["SEN0368"]["pin"])
             try:
                 self.device.setup()
             except:
@@ -87,7 +80,7 @@ if "sen0368" in sys.modules:
 class TestVirtualHCSR04(unittest.TestCase, DeviceTests):
 
     def setUp(self):
-        self.device = virtual_hcsr04.VirtualHCSR04(HCSR04_ECHO_PIN, HCSR04_TRIGGER_PIN)
+        self.device = virtual_hcsr04.VirtualHCSR04(config["hal"]["HCSR04"]["echoPin"], config["hal"]["HCSR04"]["triggerPin"])
 
     def testRead(self):
         try:
@@ -111,7 +104,7 @@ class TestVirtualMLX90614(unittest.TestCase, DeviceTests):
 class TestVirtualBuzzer5v(unittest.TestCase, DeviceTests):
     
     def setUp(self):
-        self.device = virtual_buzzer5v.VirtualBUZZER5V()
+        self.device = virtual_buzzer5v.VirtualBUZZER5V(config["hal"]["BUZZER"]["pin"])
     
     def testBuzz(self):
         try:
@@ -122,22 +115,23 @@ class TestVirtualBuzzer5v(unittest.TestCase, DeviceTests):
 class TestVirtualFS90R(unittest.TestCase, DeviceTests):
     
     def setUp(self):
-        self.device = virtual_fs90r.VirtualFS90R()
+        self.device = virtual_fs90r.VirtualFS90R(config["hal"]["FS90R"]["pin"])
 
     def testTurn(self):
         try:
             value = self.device.turn()
         except:
             self.fail("read() has not been implemented for device %s" % self.device.name)
+
 class TestVirtualSEN0368(unittest.TestCase, DeviceTests):
     
     def setUp(self):
-        self.device = virtual_sen0368.VirtualSEN0368()
+        self.device = virtual_sen0368.VirtualSEN0368(config["hal"]["SEN0368"]["pin"])
 
     def testRead(self):
         try:
             value = self.device.read()
-            self.assertTrue(value >= 0.5 and value <= 15.0)
+            self.assertTrue(value >= 0 and value <= 1)
         except:
             self.fail("read() has not been implemented for device %s" % self.device.name)
 

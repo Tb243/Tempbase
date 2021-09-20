@@ -1,5 +1,12 @@
 # Tempbase
 
+## Setting up the configuration file
+
+You must setup a configuration file first. To do this, you can simply copy `src/config.example.json` to `src/config.json` and edit the file to include
+an email password.
+
+You can test the configuration you have entered using `python3 test_config.py`
+
 ## Setting up the web server
 
 You need to install a Python websocket server library.

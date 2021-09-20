@@ -1,5 +1,5 @@
-import os
 from fsm.state import FsmState
+import os
 import time
 
 VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False

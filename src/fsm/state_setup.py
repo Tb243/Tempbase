@@ -1,6 +1,7 @@
 from fsm.state import FsmState
 from web.http_server import HttpServer
 from web.wss_server import WSServer
+from config import config
 import os
 
 class StateSetup(FsmState):
