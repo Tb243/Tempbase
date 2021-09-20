@@ -4,4 +4,5 @@ type TTempBaseFsmData = {
 	ultrasonicDistance?: number;
 	temperatureMeasurement?: number;
 	QRCodeValue?: string;
+	attemptCounter?: number;
 };
