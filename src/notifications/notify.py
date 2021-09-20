@@ -2,6 +2,7 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from config import config
 
 
 class Notifications:
@@ -27,7 +28,7 @@ class Notifications:
             # Send
 
             # TODO: Change the server parameters to use the config file.
-            mail = smtplib.SMTP("smtp.gmail.com", 587)
+            mail = smtplib.SMTP(config["transport"]["smtpServer"], config["transport"]["smtpPort"])
 
             mail.ehlo()
             mail.starttls()
@@ -76,7 +77,5 @@ class Notifications:
         self.sendEmail(recipient, "Refill alert", emailBody)
                
                 
-    def sms_notify():
-        pass
 
 

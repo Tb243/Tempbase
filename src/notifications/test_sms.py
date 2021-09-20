@@ -1,15 +1,15 @@
 from notify_sms import SMSNotify
 from twilio.rest import Client
 from twilio.base.exceptions import TwilioRestException
-
+from config import config
 
 class testSMSNotifications:
     
     def testSMS(self):
         
-        numberTo = "+61400000000"
-        numberFrom = "+61400000001"
-        notifier = SMSNotify(numberFrom, numberTo)
+        numberTo = "+61411166441"
+        numberFrom = "+61488882708cd"
+        notifier = SMSNotify(numberFrom, config["twilio"]["accountSID"], config["twilio"]["authTok"])
         
         try:
         # This could potentially throw an exception!
