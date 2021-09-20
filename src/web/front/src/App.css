@@ -11,6 +11,12 @@ body {
     background: #aaa;
 }
 
+.screen {
+    width: 480px;
+    height: 320px;
+    background-color: white;
+}
+
 .screen p {
     margin: 0 0 1em;
 }
@@ -33,7 +39,6 @@ body {
     text-align: left;
 }
 
-/* State Screens */
 
 img {
     max-width: 100px;
@@ -42,88 +47,83 @@ img {
 
 /* Setup state*/
 
-.screenSetup {
-    background-color: white;
-    height: 320px;
-    width: 480px;
 
-}
-
-.screenSetup p{
+.screenSetup p {
     padding-top: 50px;
 }
 
-.screenSetup img{
-    padding-top: 30;
+.screenSetup img {
+    padding-top: 30px;
 }
 
 /* Wait for hand state*/
-.screenWaitForHand {
-    background-color: white;
-    height: 320px;
-    width: 480px;
-}
 
-.screenWaitForHand img{
-    margin-top: 50px;
+
+.screenWaitForHand img {
+    padding-top:  20px;
+    max-width: 125px;
+    height: auto;
 }
 
 .screenWaitForHand p {
-    margin-top: 50px;
-    margin-left: 30px;
-    margin-right: 30px;
+    padding-top: 50px;
 }
 
 /* Dispense sanitiser state*/
-.screenDispenseSanitiser {
-    background-color: white;
-    height: 320px;
-    width: 480px;
+
+
+.screenDispenseSanitiser p {
+    padding-top: 50px;
 }
 
-.screenDispenseSanitiser p{
-    padding-top: 50px;
-    padding-bottom: 50px;
+.screenDispenseSanitiser img {
+    padding-top: 30px;
+    max-width: 175px;
+    height: auto;
 }
 
 
 /* Process & measure temp state*/
-.screenProcessAndMeasureTemp {
-    background-color: white;
-    height: 320px;
-    width: 480px;
-}
 
-.screenProcessAndMeasureTemp img{
-    padding-top: 80px;
+.screenProcessAndMeasureTemp img {
+    padding-top: 100px;
 }
 
 /* Measure temp state*/
-.screenMeasureTemperature {
-    background-color: white;
-    height: 320px;
-    width: 480px;
-}
 
-.screenMeasureTemperature p{
+.screenMeasureTemperature p {
     padding-top: 50px;
 }
 
-.screenMeasureTemperature img{
-    padding-top: 50px;
+.screenMeasureTemperature img {
+    padding-top: 30px;
+    max-width: 200px;
+    height: auto;
 }
 
 /* Reject user state 1*/
 .screenRejectUser {
     background-color: red;
     height: 320px;
-    width: 480px;
 }
 
-.screenRejectUser .p{
+.screenRejectUser p {
     padding-top: 50px;
 }
 
+.screenRejectUser .p1 {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+.screenRejectUser .p2{
+    padding-top: 0px;
+}
+
+.screenRejectUser img {
+    max-width: 125px;
+    height: auto;
+}
 
 /* Reject user state 2*/
 
@@ -132,5 +132,14 @@ img {
 .screenQrCodeDisplay{
     background-color: green;
     height: 320px;
-    width: 480px;
 }
+
+.screenQrCodeDisplay p {
+    padding-top: 50px;
+}
+
+.screenQrCodeDisplay .p1 {
+    padding-top: 10px;
+}
+
+

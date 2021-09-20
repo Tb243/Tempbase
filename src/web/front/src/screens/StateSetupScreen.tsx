@@ -8,8 +8,8 @@ export default class StateSetup extends React.Component<TProps> {
 	render() {
 		return (
 			<div className="screenSetup">
-				<p>Welcome! <br></br> TempBase is loading...</p>
-				<img src="loading.gif" alt="loading gif"></img>
+				<p>Welcome to TempBase - the all in one check-in station. <br></br> TempBase is loading...</p>
+				<div><img src="loading.gif" alt="loading gif"></img></div> 
 			</div>
 		);
 	}
