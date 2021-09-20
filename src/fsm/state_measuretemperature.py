@@ -30,6 +30,7 @@ class StateMeasureTemperature(FsmState):
             self.fsm.setStateData("temperatureMeasurement", read)
             #read = float(input("Enter temperature value: "))
             self.counter += 1
+            self.fsm.setStateData("attemptCounter", self.counter)
             time.sleep(2)
             #print("Counter is: ", self.counter)
             break
