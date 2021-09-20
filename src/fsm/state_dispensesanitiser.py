@@ -2,6 +2,7 @@ from fsm.state import FsmState
 from config import config
 import os
 import time
+# from notifications.notify import Notifications
 
 VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
@@ -25,6 +26,7 @@ class StateDispenseSanitiser(FsmState):
         self.counter = counter
         self.servoMotor.setup()
         self.liquidSensor.setup()
+        # self.notifier = Notifications("example@config.json", "password")
 
     def onExitState(self):
         # If the liquid level is low, send alert to device owner
@@ -38,4 +40,7 @@ class StateDispenseSanitiser(FsmState):
 
     def sendAlert(self):
         # Send the alert to the device owner
-        pass
+        # self.notifier.sendRefill("receipient@config.json")
+        for recipient in config["email"]["recipients"]:
+            # self.notifier.sendRefill(recipient)
+            pass
