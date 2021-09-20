@@ -102,31 +102,53 @@ img {
 }
 
 /* Reject user state 1*/
-.screenRejectUser {
+.screenRejectUser1 {
     background-color: red;
     height: 320px;
 }
 
-.screenRejectUser p {
+.screenRejectUser1 p {
     padding-top: 50px;
 }
 
-.screenRejectUser .p1 {
+.screenRejectUser1 .p1 {
     padding-top: 10px;
     padding-bottom: 0px;
 }
 
-.screenRejectUser .p2{
+.screenRejectUser1 .p2{
     padding-top: 0px;
 }
 
-.screenRejectUser img {
+.screenRejectUser1 img {
     max-width: 125px;
     height: auto;
 }
 
 /* Reject user state 2*/
 
+.screenRejectUser2 {
+    background-color: red;
+    height: 320px;
+}
+
+.screenRejectUser2 p {
+    padding-top: 50px;
+}
+
+.screenRejectUser2 .p1 {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+.screenRejectUser2 .p2{
+    padding-top: 0px;
+}
+
+.screenRejectUser2 img {
+    max-width: 125px;
+    height: auto;
+}
 
 /* Display Qr code state */
 .screenQrCodeDisplay{
