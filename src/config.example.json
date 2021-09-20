@@ -1,0 +1,40 @@
+{
+	"QRCodeValue": "https://service.vic.gov.au/check-in",
+	"email": {
+		"transport": {
+			"smtpServer": "smtp.gmail.com",
+			"smtpPort": 587,
+			"username": "tempbasenotifications@gmail.com",
+			"password": ""
+		},
+		"recipients": [
+			"tempbasenotifications@gmail.com",
+			"rdoug@deakin.edu.au"
+		]
+	},
+	"twilio": {
+		"accountSID": "",
+		"authTok": ""
+	},
+	"hal": {
+		"HCSR04": {
+			"echoPin": 13,
+			"triggerPin": 6
+		},
+		"BUZZER": {
+			"pin": 26
+		},
+		"FS90R": {
+			"pin": 12
+		},
+		"SEN0368": {
+			"pin": 20
+		},
+		"PUMP": {
+			"pin": 12
+		}
+	},
+	"health": {
+		"maxTemperatureThreshold": 37.6
+	}
+}
