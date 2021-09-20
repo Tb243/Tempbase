@@ -1,4 +1,4 @@
-from notify import Notifications
+from notifications.notify import Notifications
 import getpass
 import time
 

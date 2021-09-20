@@ -1,4 +1,4 @@
-from notify_sms import SMSNotify
+from notifications.notify_sms import SMSNotify
 from twilio.rest import Client
 from twilio.base.exceptions import TwilioRestException
 from config import config
