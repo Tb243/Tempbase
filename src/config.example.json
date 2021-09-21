@@ -13,8 +13,9 @@
 		]
 	},
 	"twilio": {
-		"accountSID": "",
-		"authTok": ""
+		"accountSID": "AC4125a91837bcfebf3c6e2c19644eb2de",
+		"authTok": "20c17f516cc513be6cccb6d734689541",
+		"numberTo": []
 	},
 	"hal": {
 		"HCSR04": {
