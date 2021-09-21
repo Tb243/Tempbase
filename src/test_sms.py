@@ -8,16 +8,16 @@ class testSMSNotifications:
     def testSMS(self):
         
         numberTo = "+61411166441"
-        numberFrom = "+61488882708cd"
+        numberFrom = "+61488882708"
         notifier = SMSNotify(numberFrom, config["twilio"]["accountSID"], config["twilio"]["authTok"])
         
         try:
         # This could potentially throw an exception!
            notifier.sendSMS(numberTo, "This is a test message")
+           self.log("Success")
             
         except TwilioRestException as e:
-            # Implement your fallback code
-            print(e)
+            self.log("Unsuccessful")
             
  
 if __name__ == "__main__":

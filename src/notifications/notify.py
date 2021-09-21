@@ -41,7 +41,7 @@ class Notifications:
         emailBody = """
         <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>TempBase Alert</title>
+        <title>Temperature Alert</title>
         <style type="text/css" media="screen">
             h1{ color:white;font-size:2.5em;background-color:red;text-align:center;}
             h2{color:gray;font-size:2em;text-align:center;}
@@ -50,18 +50,18 @@ class Notifications:
         </style>
         </head>
         <body>
-            <p>The temperature is 
+            <p>Elevated temperature of: 
         """
 
-        emailBody += str(temperature) + "</p></body>"
+        emailBody += str(temperature) + " detected. </p></body>"
 
-        self.sendEmail(recipient, "Temperature alert", emailBody)
+        self.sendEmail(recipient, "TempBase Alert", emailBody)
 
     def sendRefill(self, recipient):
         emailBody = """
         <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>The bottle is empty</title>
+        <title>Sanitiser Alert</title>
         <style type="text/css" media="screen">
             h1{ color:white;font-size:2.5em;background-color:red;text-align:center;}
             h2{color:gray;font-size:2em;text-align:center;}
@@ -70,12 +70,33 @@ class Notifications:
         </style>
         </head>
         <body>
-        <p>The bottle needs to be refilled</p>
+        <p>The sanitiser bottle needs to be refilled.</p>
         </body>
         """
 
-        self.sendEmail(recipient, "Refill alert", emailBody)
+        self.sendEmail(recipient, "TempBase Alert", emailBody)
                
-                
+    def sendCapacity(self, recipient):
+        
+        capacity = config["business"]["maxCapacity"]
+        
+        emailBody = """
+        <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Capacity Alert</title>
+        <style type="text/css" media="screen">
+            h1{ color:white;font-size:2.5em;background-color:red;text-align:center;}
+            h2{color:gray;font-size:2em;text-align:center;}
+            h3{color:purple;font-size:2em;text-align:center;}
+            p{color:blue;font-size:1.5em;text-align:center;}
+        </style>
+        </head>
+        <body>
+            <p>Maximum capacity of  
+        """
+
+        emailBody += str(capacity) + " may be reached. </p></body>"
+
+        self.sendEmail(recipient, "TempBase Alert", emailBody)           
 
 
