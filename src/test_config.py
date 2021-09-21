@@ -21,6 +21,14 @@ class DeviceTests(unittest.TestCase):
 		self.assertTrue("recipients" in config["email"])
 		self.assertTrue(isinstance(config["email"]["recipients"], list))
 
+	def test_twilio_configuration(self):
+		self.assertTrue("twilio" in config)
+
+		self.assertTrue("accountSID" in config["twilio"])
+		self.assertTrue("authTok" in config["twilio"])
+		self.assertTrue("numberTo" in config["twilio"])
+		self.assertTrue(isinstance(config["twilio"]["numberTo"], list))
+
 	def test_hal(self):
 		self.assertTrue("hal" in config)
 
