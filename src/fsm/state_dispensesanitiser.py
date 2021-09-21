@@ -2,7 +2,8 @@ from fsm.state import FsmState
 from config import config
 import os
 import time
-# from notifications.notify import Notifications
+from notifications.notify import Notifications
+from notifications.notify_sms import SMSNotify
 
 VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
@@ -31,16 +32,33 @@ class StateDispenseSanitiser(FsmState):
     def onExitState(self):
         # If the liquid level is low, send alert to device owner
         if self.liquidSensor.read() == 0:
-            self.sendAlert()
+            self.sendAlert(1,1)
 
     def main(self):
         self.servoMotor.turn()
         time.sleep(2)
         self.fsm.transitionState("measureTemperature", self.counter)
 
-    def sendAlert(self):
-        # Send the alert to the device owner
-        # self.notifier.sendRefill("receipient@config.json")
-        for recipient in config["email"]["recipients"]:
-            # self.notifier.sendRefill(recipient)
-            pass
+    # Send the alert to the device owner - 1 for yes, 0 for no
+    def sendAlert(self, sms, email):
+        
+        smsAlert = sms
+        emailAlert = email
+        
+        try:
+            if smsAlert == 1:
+                for recipient in config["twilio"]["numberTo"]:
+                    SMSNotify.smsRefill(recipient)
+                self.log("temp sms success")
+            else:
+                pass
+            
+            if emailAlert == 1:
+                for recipient in config["email"]["recipients"]:
+                    Notifications.sendRefill(recipient)
+                self.log("temp email success")
+            else:
+                pass
+        except:
+            self.log("Unsuccesful")
+              

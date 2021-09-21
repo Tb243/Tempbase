@@ -1,6 +1,9 @@
 import os
 from fsm.state import FsmState
 import time
+from notifications.notify import Notifications
+from notifications.notify_sms import SMSNotify
+from config import config
 
 VIRTUAL_MODE = True if os.environ.get("virtualMode") == "on" else False
 
@@ -17,8 +20,9 @@ class StateRejectUser(FsmState):
         self.fsm = fsm
         self.buzzer = Buzzer5v(26)
         
-    def onEnterState(self, counter):
-        self.counter = counter
+    def onEnterState(self, args):
+        self.temperature = args[0]
+        self.counter = args[1]
         self.buzzer.setup()
 
     def onExitState(self):
@@ -39,5 +43,28 @@ class StateRejectUser(FsmState):
             self.buzzer.buzz(0.5)
             self.log("BUZZ")
             time.sleep(2)
-            # send alert to device owner
+            self.sendAlert(self.temperature, 1, 1)
             self.fsm.transitionState("waitForHand")
+            
+        # Send the alert to the device owner - 1 for yes, 0 for no
+    def sendAlert(self, temp, sms, email):
+        self.temperature = temp
+        smsAlert = sms
+        emailAlert = email
+
+        try:
+            if smsAlert == 1:
+                for recipient in config["twilio"]["numberTo"]:
+                    SMSNotify.smsTemp(recipient, self.temperature)
+                self.log("Santise SMS success")
+            else:
+                pass
+            
+            if emailAlert == 1:
+                for recipient in config["email"]["recipients"]:
+                    Notifications.sendTemp(recipient, self.temperature)
+                self.log("Sanitise email success")
+            else:
+                pass
+        except:
+            self.log("Unsuccesful")
