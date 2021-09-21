@@ -1,38 +1,167 @@
 body {
-	background: #666;
-	margin: 0;
-	padding: 0;
+    background: #666;
+    margin: 0;
+    padding: 0;
 }
 
 .app {
-	text-align: center;
-	width: 480px;
-	height: 320px;
-	background: #aaa;
+    text-align: center;
+    width: 480px;
+    height: 320px;
+    background: #aaa;
+}
+
+.screen {
+    width: 480px;
+    height: 320px;
+    background-color: white;
 }
 
 .screen p {
-	margin: 0 0 1em;
+    margin: 0 0 1em;
 }
 
 .app footer {
-	position: fixed;
-	left: 0;
-	top: 0;
-	max-width: 640px;
-	padding: 0.5em;
-	background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    max-width: 640px;
+    padding: 0.5em;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .app footer pre {
-	font-size: 10px;
-	font-weight: bold;
-	margin: 0 0 5px;
-	font-family: monospace;
-	color: #eee;
-	text-align: left;
+    font-size: 10px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    font-family: monospace;
+    color: #eee;
+    text-align: left;
 }
 
-.screenWaitForHand {
-	background-color: red;
+
+img {
+    max-width: 100px;
+    height: auto;
 }
+
+/* Setup state*/
+
+
+.screenSetup p {
+    padding-top: 50px;
+}
+
+.screenSetup img {
+    padding-top: 30px;
+}
+
+/* Wait for hand state*/
+
+
+.screenWaitForHand img {
+    padding-top:  20px;
+    max-width: 125px;
+    height: auto;
+}
+
+.screenWaitForHand p {
+    padding-top: 50px;
+}
+
+/* Dispense sanitiser state*/
+
+
+.screenDispenseSanitiser p {
+    padding-top: 50px;
+}
+
+.screenDispenseSanitiser img {
+    padding-top: 30px;
+    max-width: 175px;
+    height: auto;
+}
+
+
+/* Process & measure temp state*/
+
+.screenProcessAndMeasureTemp img {
+    padding-top: 100px;
+}
+
+/* Measure temp state*/
+
+.screenMeasureTemperature p {
+    padding-top: 50px;
+}
+
+.screenMeasureTemperature img {
+    padding-top: 30px;
+    max-width: 200px;
+    height: auto;
+}
+
+/* Reject user state 1*/
+.screenRejectUser1 {
+    background-color: red;
+    height: 320px;
+}
+
+.screenRejectUser1 p {
+    padding-top: 50px;
+}
+
+.screenRejectUser1 .p1 {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+.screenRejectUser1 .p2{
+    padding-top: 0px;
+}
+
+.screenRejectUser1 img {
+    max-width: 125px;
+    height: auto;
+}
+
+/* Reject user state 2*/
+
+.screenRejectUser2 {
+    background-color: red;
+    height: 320px;
+}
+
+.screenRejectUser2 p {
+    padding-top: 50px;
+}
+
+.screenRejectUser2 .p1 {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+.screenRejectUser2 .p2{
+    padding-top: 0px;
+}
+
+.screenRejectUser2 img {
+    max-width: 125px;
+    height: auto;
+}
+
+/* Display Qr code state */
+.screenQrCodeDisplay{
+    background-color: green;
+    height: 320px;
+}
+
+.screenQrCodeDisplay p {
+    padding-top: 50px;
+}
+
+.screenQrCodeDisplay .p1 {
+    padding-top: 10px;
+}
+
+

@@ -20,5 +20,5 @@ class VirtualBUZZER5V(Device):
 	def read(self):
 		pass
 
-	def buzz(self):
-		time.sleep(1)
+	def buzz(self, timeLength):
+		time.sleep(timeLength)

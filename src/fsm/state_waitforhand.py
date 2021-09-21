@@ -24,13 +24,18 @@ class StateWaitForHand(FsmState):
 
     def main(self):
         counter = 0
-        while True:
+        successfulReads = 0
+        while successfulReads < 5:
             distance = self.hcsr04.read()
-            self.fsm.setStateData("ultrasonicDistance", distance)
             self.log("Distance to hand: %f" % distance)
+            self.fsm.setStateData("ultrasonicDistance", distance)
+
             if distance < 12:
-                break
-            time.sleep(2)
+                successfulReads += 1
+            else:
+                successfulReads = 0
+
+            time.sleep(0.1)
 
 
         self.fsm.transitionState("dispenseSanitiser", counter)

@@ -30,7 +30,7 @@ class Fsm:
 
     def setStateData(self, key, val):
         self.stateData[key] = val
-        self.callStateHooks
+        self.callStateHooks()
 
     def callStateHooks(self):
         if len(self.stateHooks) > 0:

@@ -5,10 +5,14 @@ import time
 class HCSR04(Device):
 
 	def __init__(self, echoPin=None, triggerPin=None):
-		self.name = "HCSP04"
+		self.name = "HCSR04"
 		self.isVirtual = False
 		self.echoPin = echoPin
 		self.triggerPin = triggerPin
+
+	def validateConfig(self):
+		if self.echoPin != None and self.triggerPin != None:
+			return True
 
 	def setup(self):
 		GPIO.setup(self.echoPin, GPIO.IN)

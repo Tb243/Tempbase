@@ -8,7 +8,7 @@ export default class ProcessAndMeasureTempScreen extends React.Component<TProps>
 	render() {
 		return (
 			<div className="screenProcessAndMeasureTemp">
-				<p>This is the process and measure temperature screen and will display a loading icon</p>
+				<div><img src="loading.gif" alt="loading gif"></img></div> 
 			</div>
 		);
 	}

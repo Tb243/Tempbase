@@ -32,5 +32,5 @@ class StateProcessAndStoreTemp(FsmState):
         else : 
             self.temperatureModel.recordTemperature(self.temperature, False)
             self.log("Your temperature is: %d" % self.temperature)
-            self.fsm.transitionState("rejectUser", self.counter)
+            self.fsm.transitionState("rejectUser",  [self.temperature, self.counter])
         
