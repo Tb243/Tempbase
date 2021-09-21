@@ -1,32 +1,12 @@
 from notifications.notify import Notifications
 import getpass
 import time
+from config import config
 
-class testNotifications:
-    
-    def testEmail(self):
-        
-        
-        #get password for sending email pw = xxxxxxxx
-        email = "tempbasenotifications@gmail.com"
-        print("Enter password for " + email)
-        pw = str(getpass.getpass())
-        notifier = Notifications(email, pw, "tempbasenotifications@gmail.com")
-        
-        #time limit for subsequent emails
-        time_limit = 30
-        last_email = time.time() - time_limit   
-        
-        temperature = str(38.9)
-        
-        if (time.time() - last_email) > time_limit:
-            last_email = time.time()
-            notifier.email_notify("Elevated temperature recorded ", time.strftime("%d:%h:%m"), temperature)
-            print('success')
-            
-    def testSms(self):
-        pass
+print("Send to whom?")
+receipient = str(input())
+notifier = Notifications(config["email"]["transport"]["username"], config["email"]["transport"]["password"])
 
-if __name__ == "__main__":
-    test = testNotifications()
-    test.testEmail()
+temperature = str(38.9)
+notifier.sendTemp(receipient, temperature)
+notifier.sendRefill(receipient)

@@ -9,7 +9,6 @@ class Notifications:
     
     
     def __init__(self, system_email, system_pass):
-        self.name = "NOTIFICATIONS"
         self.system_email = system_email
         self.system_pass = system_pass
         
@@ -27,8 +26,7 @@ class Notifications:
             MESSAGE.attach(HTML_EMAIL_BODY)
             # Send
 
-            # TODO: Change the server parameters to use the config file.
-            mail = smtplib.SMTP(config["transport"]["smtpServer"], config["transport"]["smtpPort"])
+            mail = smtplib.SMTP(config["email"]["transport"]["smtpServer"], config["email"]["transport"]["smtpPort"])
 
             mail.ehlo()
             mail.starttls()
