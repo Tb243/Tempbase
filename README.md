@@ -91,3 +91,9 @@ __Setting up SMS:__
 brew tap twilio/brew && brew install twilio
 pip install twilio
 ```
+
+On Linux:
+
+```
+pip3 install --user twilio
+```
