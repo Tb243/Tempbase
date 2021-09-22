@@ -25,14 +25,24 @@ class StateMeasureTemperature(FsmState):
         pass
 
     def main(self):
-        while True:
+
+        timeStart = time.time()
+        startTemperature = self.temperatureSensor.read()
+
+        # Spend no more than one second measuring the temperature.
+        while (time.time() - timeStart) < 1.0:
             read = self.temperatureSensor.read()
-            self.fsm.setStateData("temperatureMeasurement", read)
-            #read = float(input("Enter temperature value: "))
-            self.counter += 1
-            self.fsm.setStateData("attemptCounter", self.counter)
-            time.sleep(2)
-            #print("Counter is: ", self.counter)
-            break
+            difference = read - startTemperature
+
+            # If the temperature value has increased more than ten percent, break the loop early.
+            if startTemperature > 0 and (difference / startTemperature) > 0.1:
+                break
+
+            time.sleep(0.1)
+
+
+        self.counter += 1
+        self.fsm.setStateData("temperatureMeasurement", read)
+        self.fsm.setStateData("attemptCounter", self.counter)
         
         self.fsm.transitionState("processAndStoreTemperature", [read, self.counter])
