@@ -24,9 +24,8 @@ class StateProcessAndStoreTemp(FsmState):
     def main(self):
         if self.temperature < config["health"]["maxTemperatureThreshold"]:
             self.temperatureModel.recordTemperature(self.temperature, True)
-            #display green tick
             self.log("Your temperature is: %d" % self.temperature)
-            self.log("Green Tick being displayed")
+            self.log("QR code being displayed")
             time.sleep(2)
             self.fsm.transitionState("displayQrCode")
         else : 
