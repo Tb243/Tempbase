@@ -39,7 +39,7 @@ class StateWaitForHand(FsmState):
 
                 self.log("Successful reads: %s" % str(successfulReads))
                 self.log("Spinning...")
-                time.sleep(0.5)
+                time.sleep(0.1)
             except:
                 self.log("Time out reading HCSR04")
 
