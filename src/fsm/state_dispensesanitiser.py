@@ -23,7 +23,7 @@ class StateDispenseSanitiser(FsmState):
 		self.fsm = fsm
 		self.pump = PUMP(config["hal"]["PUMP"]["pin"])
 		self.liquidSensor = SEN0368(config["hal"]["SEN0368"]["pin"])
-		self.smsNotifier = SMSNotify(config["twilio"]["systemNumber"], config["twilio"]["accountSID"], config["twilio"]["authTok"])
+		self.smsNotifier = SMSNotify(config["twilio"]["numberFrom"], config["twilio"]["accountSID"], config["twilio"]["authTok"])
 		self.emailNotifier = Notifications(config["email"]["transport"]["username"], config["email"]["transport"]["password"])
 
 	def onEnterState(self, counter):

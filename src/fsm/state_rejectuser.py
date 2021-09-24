@@ -19,7 +19,7 @@ class StateRejectUser(FsmState):
 		self.label = "Reject User"
 		self.fsm = fsm
 		self.buzzer = Buzzer5v(26)
-		self.smsNotifier = SMSNotify(config["twilio"]["systemNumber"], config["twilio"]["accountSID"], config["twilio"]["authTok"])
+		self.smsNotifier = SMSNotify(config["twilio"]["numberFrom"], config["twilio"]["accountSID"], config["twilio"]["authTok"])
 		self.emailNotifier = Notifications(config["email"]["transport"]["username"], config["email"]["transport"]["password"])
 		
 	def onEnterState(self, args):
