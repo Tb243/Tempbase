@@ -23,17 +23,23 @@ class HCSR04(Device):
 	def destroy(self):
 		GPIO.cleanup()
 
-	def read(self):
+	def read(self, timeout=1.0):
 		GPIO.output(self.triggerPin, 1)
 		time.sleep(0.00001)
 		GPIO.output(self.triggerPin, 0)
 
+		timeoutStart = time.time()
 		pulseStart = time.time()
 		while GPIO.input(self.echoPin) == 0:
 			pulseStart = time.time()
+			if (time.time() - timeoutStart) >= timeout:
+				raise("Timeout reading echo event")
+
 
 		pulseEnd = time.time()
 		while GPIO.input(self.echoPin) == 1:
 			pulseEnd = time.time()
+			if (time.time() - timeoutStart) >= timeout:
+				raise("Timeout reading echo event")
 
 		return (pulseEnd - pulseStart) * 17150

@@ -21,7 +21,7 @@ class VirtualHCSR04(Device):
 		# No pins need to be disabled as this is a virtual device.
 		pass
 
-	def read(self):
+	def read(self, timeout=1.0):
 		# Since this is a virtual device, we just generate a fake 
 		# value to emulate a sensorreading.
 		time.sleep(0.00001)
