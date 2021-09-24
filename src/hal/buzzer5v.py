@@ -22,9 +22,7 @@ class Buzzer5v(Device):
 		pass
 
 	def buzz(self, timeLength):
-		pwm = GPIO.PWM(self.buzzerPin, 50)
-		pwm.start(0)
-		pwm.ChangeDutyCycle(20.4)
+		GPIO.output(self.buzzerPin, 1)
 		time.sleep(timeLength)
-		pwm.stop()
+		GPIO.output(self.buzzerPin, 0)
 
