@@ -15,9 +15,10 @@ class StateWaitForHand(FsmState):
         self.label = "Wait for hand"
         self.fsm = fsm
         self.hcsr04 = HCSR04(config["hal"]["HCSR04"]["echoPin"], config["hal"]["HCSR04"]["triggerPin"])
+        self.hcsr04.setup()
 
     def onEnterState(self, args=None):
-        self.hcsr04.setup()
+        pass
 
     def onExitState(self):
         pass
@@ -26,16 +27,22 @@ class StateWaitForHand(FsmState):
         counter = 0
         successfulReads = 0
         while successfulReads < 5:
-            distance = self.hcsr04.read()
-            self.log("Distance to hand: %f" % distance)
-            self.fsm.setStateData("ultrasonicDistance", distance)
+            try:
+                distance = self.hcsr04.read(1.0)
+                self.log("Distance to hand: %f" % distance)
+                self.fsm.setStateData("ultrasonicDistance", distance)
 
-            if distance < 12:
-                successfulReads += 1
-            else:
-                successfulReads = 0
+                if distance < 12:
+                    successfulReads += 1
+                else:
+                    successfulReads = 0
 
-            time.sleep(0.1)
+                self.log("Successful reads: %s" % str(successfulReads))
+                self.log("Spinning...")
+                time.sleep(0.5)
+            except:
+                self.log("Time out reading HCSR04")
+
 
 
         self.fsm.transitionState("dispenseSanitiser", counter)
