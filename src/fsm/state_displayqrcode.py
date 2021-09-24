@@ -16,9 +16,7 @@ class StateDisplayQrCode(FsmState):
 		pass
 
 	def main(self):
-		#display qr code
 		self.log("QR Code being displayed")
-		#wait 10 seconds
-		self.log("waiting 10 seconds")
+		self.log("Waiting 10 seconds")
 		time.sleep(10)
 		self.fsm.transitionState("waitForHand")

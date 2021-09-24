@@ -22,7 +22,4 @@ class StateSetup(FsmState):
 		})
 
 	def main(self):
-		#Set up server
-		#Set up database
-		#Set up web browser (launch web browser)
 		self.fsm.transitionState("waitForHand")
